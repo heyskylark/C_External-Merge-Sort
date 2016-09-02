@@ -1,0 +1,371 @@
+Web Page Recommendation based on Markov Logic Network 
+Wang Ping 
+Department of Mathematics and Information Science 
+Zaozhuang University 
+Zaozhuang, China 
+wangping_ zzu@163.com 
+Abstract-Recent research initiatives have addressed the need 
+for improved performance of Web page recommendation 
+accuracy that would profit many applications, e-business in 
+particular. Different Web usage mining frameworks have been 
+implemented for this purpose specifically Association rules and 
+clustering. Each of these frameworks has its own strengths and 
+weaknesses. An approach based on Markov Logic Network is 
+proposed to do Web page recommendation, which take full use 
+of four kinds of characteristics. The experiments show that the 
+approach can achieve high accuracy on Web page 
+recommendation. 
+Keywords-Web page recommendation; Markov Logic 
+Network 
+I. INTRODUCTION 
+The immense volume of online infonnation covering 
+almost all types of applications makes the web susceptible to 
+a wide range of infonnation discovery and retrieval tools. 
+Web applications today are driven to provide a more 
+personalized experience for their users. Therefore, it is 
+extremely important to be one step ahead of web users when 
+it comes to predicting next accessed pages. For instance, 
+knowing the user's browsing history on the site grants us 
+valuable information as to which one of the most frequently 
+accessed pages will be accessed next. Also, it provides us 
+with extra infonnation like the type of user we are dealing 
+with and the user's preferences as well. Some widely used 
+data mining methods to achieve the goal are association rule 
+mining, clustering, and so on. 
+Association rule mining is a major pattern discovery 
+technique[I]. The original goal of association rule mining is 
+to solve market basket problem but the applications of 
+association rules are far beyond that. Using association rules 
+for Web page recommendation involves dealing with too 
+many rules and it is not easy to find a suitable subset of rules 
+to make accurate and reliable recommendations[2,3]. 
+Clustering groups user sessions into clusters based on 
+similarity between common acivities. It aims at dividing web 
+sessions into groups where the distance between clusters is 
+maximised while the distance between sessions within the 
+same cluster is minimized. The clustering methods partition 
+data objects into a number of homogeneous groups based on 
+their similarity. Clustering methods do not classify user 
+sessions directly [4,5] , but will help build classification 
+models if data objects are properly clustered. 
+978-1-4244-5540-9/10/$26.00 ©2010 IEEE 
+254 
+In this paper, an approach based on Markov Logic 
+Network is proposed, which takes full advantage of the log 
+of web users, the cluster characteristics of web pages, and the 
+content characteristics of web pages to recommend related 
+web pages to web users. We begin by briefly reviewing the 
+necessary background on Markov networks, first-order logic 
+and Markov Logic Networks. We then describe our proposed 
+approach to Web page recommendation, report on 
+experiments, and conclusion. 
+II. WEB PAGE RECOMMENDATION 
+Markov logic network can depict various kinds of 
+features and do inference, so it is used to judge the relativity 
+between two different pages, and then, do page 
+recommendation in this paper. 
+A. Markov Networks 
+A Markov network (also known as Markov random field) 
+is a model for the joint distribution of a set of variables 
+X = (XpX2,··,XJE % [6]. It is composed of an 
+undirected graph G and a set of potential functions fA . The 
+graph has a node for each variable, and the model has 
+potential function for each clique in the graph. A potential 
+function is a non-negative real-valued function of the state of 
+corresponding clique. The joint distribution represented by a 
+Markov net- work is given by 
+1 
+P(X = x) = -II ¢k(X{k}) (1) Z k 
+Where X{k} is the state of the eh clique (i.e., the state of 
+the variables that appear in that clique). Z , known as the 
+partition function, is given by Z= LXExIIk¢k(X{k})' 
+Markov networks are often conveniently represented as log 
+linear models, with each clique potential replaced by an 
+exponentiated weighted sum of features of the state, leading 
+to 
+1 
+P(X = x) = -expeL Wj?(x)) (2) Z j 
+A feature may be any real-valued function of the state. 
+This paper will focus on binary features, ? (x) E {O,1}. In 
+the most direct translation from the potential-function fonn 
+(Equation 1), there is one feature corresponding to each 
+possible state X{k} of each clique, with its weight being 
+log¢k(x{k})' This representation is exponential in the size 
+of the cliques. However, we are free to specify a much 
+smaller number of features, allowing for a more compact 
+representation than the potential-function form, particularly 
+when large cliques are present. Markov Logic Network takes 
+advantage of this. 
+B. First-Order Logic 
+A first-order logic base (KB) is a set of sentences or 
+formulas in first-order logic. Formulas are constructed using 
+four types of symbols: constants, variables, functions, and 
+predicates. Constant symbols represent objects in the domain 
+of interest. Variable symbols range over the objects in the 
+domain. Function symbols represent mappings from tuples 
+of objects to objects. Predicate symbols represent relations 
+among objects in the domain or attributes of objects. 
+C. Markov Logic Network 
+A first-order KB can be seen as a set of hard constraints 
+on the set of possible world: if a world violates even one 
+formula, it has zero probability. The basic idea in Markov 
+Logic Network is to soften these constraints: when a world 
+violates one formula in the KB it is less probable, but not 
+impossible. The fewer formulas a world violates, the more 
+probable it is. Each formula has an associated weight that 
+reflects how strong a constraint it is: the higher the weight, 
+the greater the difference in log probability between a world 
+that satisfies the formula and one that does not, other things 
+being equal. 
+Definition A Markov logic network (MLN) L is a set of 
+pairs (F;, Wi) , where F; is a formula in first-order logic 
+and Wi is a real number. Together with a finite set of 
+constants C = {cpc2,,.· 'C1CI} , it defines a Markov 
+network ML,c (Equation land 2) as follows: 
+(1) ML,c contains one binary node for each possible 
+grounding of each predicate appearing in L . The value of 
+the node is 1 if the ground predicate is true, and 0 otherwise. 
+(2) ML,c contains one feature for each possible 
+grounding of each formula F; in L . The value of his 
+feature is 1 if the ground formula is true, and 0 otherwise. 
+The weight of the feature is the Wi associated with F; in 
+L. 
+Thus there is an edge between two nodes of ML,c iff the 
+corresponding ground predicates appear together in at least 
+one grounding of one formula in L. An MLN can be viewed 
+as a template for constructing Markov networks. From 
+Definition 1 and Equation 1 and 2, the probability 
+distribution over possible worlds X specified by the ground 
+Markov network ML,c is given by 
+255 
+1 F 
+P(X = x) = -expeL wini(x)) (3) 
+Z i=1 
+where F is the number formulas in the MLN and 
+ni (x) is the number of true groundings of F; in X . As 
+formula weights increase, an MLN increasingly resembles a 
+purely logical KB, becoming equivalent to one in the limit of 
+all infinite weights. 
+Eq. (3) defmes a generative MLN model, that is, it 
+defines the joint probability of all the predicates. In our 
+application of Web page recommendation, we know the 
+evidence predicates and the query predicates a prior. Thus, 
+we turn to the discriminative MLN. Discriminative models 
+have the great advantage of incorporating arbitrary useful 
+features and have shown great promise as compared to 
+generative models. We partition the predicates into two sets, 
+the evidence predicates X and the query predicates Q. 
+Given an instance X , the discriminative MLN defines a 
+conditional distribution as follows: 
+1 
+P(q I x) = --exp(L Lwigj(q,x)) (4) Zx(W) ieFQieGj 
+Where FQ is the set of formulas with at least one 
+grounding involving a query predicate, Gi is the set of 
+ground formulas of the ith first-order formula, and Z 
+x ( w) 
+is the normalization factor. g j (q, x) is binary and equals to 
+1 if the /h ground formula is true and 0 otherwise. 
+D. Features 
+In this paper, we define the query predicates as 
+IsRecommendationPage(p 1 ,p2), which means whether p2 is 
+the recommendation page of pI. In this paper, four different 
+kinds of features are used to judge whether one page can be 
+taken as the target page's recommendation page. These 
+features are described by predicates and formulas, which are 
+showed in Table 1. 
+TABLE I. FEATURES USED IN EXPERIMENTS 
+Feature Description 
+Cooccurrence(p I ,p2) The cooccurrence number of two pages ,such 
+as p I and p2, in visit log is higher than the 
+threshold. 
+ContentCorrelative(p I ,p2) The contents of two pages are correlative. 
+SameCluster(pl,p2) The two pages belong to the same cluster. 
+UriSimilar( pI ,p2) The UrIs of two pages are of similar pattern. 
+E. Weight Training 
+The state-of-the-art discriminative weight learning 
+algorithm for MLN's is the voted perception algorithm[8]. 
+The voted perception is gradient descent algorithm that will 
+first set all weights to zero. It will iterate through the training 
+data and update the weights of each of the formulas based on 
+whether the predicted value of the training set matches the 
+true value. Finally, to prevent overfitting, we will use the 
+average weights of each iteration rather than the final 
+weights. In order to train the data using the voted perception 
+algorithm, we must know the expected number of true 
+groundings of each clause. This problem is generally 
+intractable,and therefore, the MC-SAT algorithm is used for 
+approximation. Refer to Singla and Domingos[7] for a more 
+detainled discussion of the weight training algorithm. 
+F. Inference 
+Inference in MLN requires reasoning with both 
+probabilistic and deterministic dependencies. Traditionally, 
+MCMC algorithms have been used for inference in 
+probabilistic models, and satisfiability algorithms have been 
+used for pure logical systems. Since a MLN contains both 
+probabilistic and deterministic dependencies, neither will 
+give good results. In our exprements, the MC-SAT algorithm 
+will be used to determine the values of query predicates. The 
+MC-SAT is an algorithm that combines MCMC and 
+satisfiability techniques, and therefore performs well in MLN 
+inferences. Refer to Poon and Pedro Domingos[9] for a more 
+detailed discussion of the inference algorithm. 
+III. EXPERIMENTS 
+The real-world data from diverse domains are collected 
+and used to evaluate the performance of our approach from 
+the following 3 aspects: (1) The overall accuracy of this 
+approach; (2) Effect of different characteristics; (3) Effect of 
+different inference. 
+A. Datasets 
+The approach is evaluated on the following datasets. The 
+book dataset, denoted as B, consists of 2000 books collected 
+from 30 online book stores. The desktop dataset, denoted as 
+D, consists of 3500 desktop information collected from 
+FROOGLE(Google Product Search). The reference dataset, 
+denoted as P, was created by the Cora project 
+(http://www.cs.umass.eduJ?mccallum/data). It contains 800 
+references. 
+B. Evaluation Criteria 
+To evaluate the performance comprehensively, several 
+criteria that were widely used before are 
+taken: Recall, Precision, FI - measure. They measure 
+the performance of the model on different aspects. A brief 
+defmition is given as follows. 
+Defining A as the total number of Web pages to be 
+recommended, B as the number of Web pages which are 
+correctly recommended, C as the number of Web pages 
+which are wrongly recommended. The two basic 
+measurements, Recall and Precision, are defined as: 
+Recall = B, Precision = _B_ . 
+A B
++C 
+Then FI - measure IS 
+FI = 
+2 x Precision x Recall 
+. Precision + Recall 
+calculated to be 
+256 
+C. Experiment results 
+The results on different datasets are showed in Figure 1. 
+It can be concluded that the approach can achieve high 
+accuracy on different datasets. And on dataset P, the Recall , 
+Precision and FI-measure can reach 91.2%, 84.5% and 
+87.7% respectively. 
+100% ,-------------------,
+90% 
+80% 
+70% 
+60% 
+50% 
+40% 
+30% 
+20% 
+10% 
+0% 
+I!Illecall 
+OPreclslon 
+Ii:I F i-measure 
+Figure!. Recommendation Accuracy on different datasets 
+The different inference methods can be used in our 
+approach, which are MC-SAT, Simulate Annealing, Gibbs 
+Sampling. We test different inference methods on dataset B. 
+The results in Figure 2 show that MC-SAT achieve better 
+accuracy. 
+100% 
+90% 
+80% 
+70% 
+60% 
+50% 
+40% 
+30% 
+20% 
+10% 
+0% 
+I c--
+i-
+I--
+I--
+I-
+i-
+I--
+I--
+Me-SAT 
+? 
+Simulate 
+Anneal i ng 
+.--I? I-
+l-
+I-
+l-
+i-
+Gibbs Sampling 
+o Recall 
+GPrecision 
+Figure 2. Different inference methods on Dataset B 
+IV. RELATED WORKS 
+A number of researchers attempted to improve the Web 
+page recommendation precision by combining different 
+recommendation frameworks. For instance, many papers 
+combined clustering with association rules have introduced a 
+customized marketing on the Web approach using a 
+combination of clustering and association rules[lO]. The 
+authors collected information about customers using forms, 
+Web server log files and cookies. They categorized 
+customers according to the information collected. Since k­
+means clustering algorithm works only with numerical data, 
+the authors used PAM algorithm to cluster data using 
+categorical scales. They then performed association rules 
+techniques on each cluster. They proved through 
+experimentations that implementing association rules on 
+clusters achieves better results that on non-clustered data for 
+customizing the customers' marketing preferences. 
+Liu et al.[ll]have introduced MARC (Mining 
+Association Rules using Clustering) that helps reduce the I/O 
+overhead associated with large data bases by making only 
+one pass over the database when learning association rules. 
+The authors group similar transactions together and they 
+mine aSSOcIatIOn rules on the summaries of clusters 
+instead of the whole data set. Although the authors prove 
+through experimentation that MARFC can learn association 
+rules more efficiently, their algorithm does not improve on 
+the accuracy of the association rules learned. 
+V. CONCLUSION 
+In this paper, an approach based on Markov Logic 
+Network is proposed to do Web page recommendation, 
+which take full use of four kinds of characteristics. And the 
+experiments show that the approach can achieve high 
+accuracy on Web page recommendation. 
+REFERENCES 
+[I ] Mobasher B. , Dai H. , Luo T., Nakagawa M. Effective 
+personalization based on association rule discovery from web useage 
+data. WIDMOI, USA, pp.9-15. 
+[2] Kim D. Adam N. Alturi V. Bieber M. Yesha Y. A clickstream-based 
+collaborative filtering personalizaion model: Towards a better 
+performance. WIDM'04 pp.88-95. 
+[3] Yong W. Zhanhuai L. Yang Z. Mining sequential association-rule for 
+improving web document prediction. ICCIMA '05 pp.146-151. 
+257 
+[4] Papadakis N. K., Skoutas D. STAVIES: A system for information 
+extraction from unknown web data sources through automatic web 
+wrapper generation using clustering techniques. IEEE Transactions 
+on Knowledge and Data Engineering, 2005,17(12), 1638-1652. 
+[5] Rigou M. Sirmakesses S. Tzimas G. A method for personalized 
+clustering in data intensive web applications, APS'06, pp.35-40. 
+[6] J. Pearl. Probabilistic reasoning in intelligent systems: networks of 
+plausible inference. Morgan Kaufmann, San Francisco, CA, 1988. 
+[7] Singla and Domingos, Discriminative training of Markov Logic 
+Networks. Proceedings of the Twentieth National Conference on 
+Artificial Intelligence, Pittsburgh, PA:AAAI Press, 2005, pp.868-
+873. 
+[8] Lowd and Domingos, Efficient weight learning for Markov Logic 
+Networks, Proceedings of the Eleventh European Conference on 
+Principles and Practice of Knowledge Discovery in Databases, 
+Warsaw, Poland: Springer, 2007, pp.200-211. 
+[9] Poon and Domingos, Sound and efficient inference with probabilistic 
+and deterministic dependencies. Proceedings of the Twenty-First 
+National Conference on Artificial Intelligence, Boston, MA: AAAI 
+Press, 2006, pp. 458-463. 
+[10] Lu L. Dunham M. Meng Y. Discovery of sinificant usage patterns 
+from clusters of click stream data , WebKDD'05. 
+[11] Liu F. Lu Z. Lu S. Mining association rules using clustering, 
+Intelligent Data Analysis (5), 2001. pp.309-326. 

@@ -1,0 +1,399 @@
+2010 IEEE International
+Conference on Granular
+Computing
+GrC 2010
+Table of Contents
+Preface........................................................................................................................................................................................xiv
+Conference Organization............................................................................................................................................xvi
+Program Committee Members.............................................................................................................................xviii
+Keynote Speakers and Invited Papers
+Advances in Rough and Fuzzy Set Information Systems ...................................................................................................................3
+Theresa Beaubouef and Frederick E. Petry
+A Summary on Fuzzy Probability Theory ..........................................................................................................................................5
+Michael Beer
+A Summary on Granular Computing and Modeling of the Uncertainty in Quantum Mechanics .......................................................7
+Kow-Lung Chang
+An Update and an Overview on Philosophical Foundation of Granular Computing ..........................................................................9
+Zhengxin Chen and Nian Yan
+Can Fuzzy Logic Bring Complex Environmental Problems into Focus? .........................................................................................11
+Ashok Deshpande
+Granular Neural Networks with Decision Fusion .............................................................................................................................18
+Zejin Ding and Yan-Qing Zhang
+A Summary and Update of “Granular Computing and Data Mining for Ordered Data: The
+Dominance-Based Rough Set Approach” .........................................................................................................................................20
+Salvatore Greco, Benedetto Matarazzo, and Roman Slowinski
+Selected Topics of Data Mining ........................................................................................................................................................22
+Jerzy W. Grzymala-Busse
+Principles, Applications, and Trends of Granular Computing ..........................................................................................................24
+Jianchao Han and Nick Cercone
+Genetic-Fuzzy Data Mining Techniques ...........................................................................................................................................26
+Tzung-Pei Hong, Chun-Hao Chen, and Vincent S. Tseng
+A Summary of Genetic-Fuzzy Data Mining Techniques ..................................................................................................................28
+Tzung-Pei Hong, Chun-Hao Chen, and Vincent S. Tseng
+v
+A Summary and Update of Social Networks and Granular Computing ...........................................................................................30
+Churn-Jung Liau
+Update and Illustration on Granular Computing: Practices, Theory and Future Directions .............................................................32
+Tsau Young (T.Y.) Lin
+Interval Type-2 Fuzzy Logic System versus Perceptual Computer: Similarities and Differences ...................................................34
+Jerry M. Mendel
+Granulation of Knowledge by Tools of Rough Mereology ...............................................................................................................35
+Lech Polkowski
+Descriptive Granularity .....................................................................................................................................................................37
+Anita Wasilewska
+A Summary of Granular Computing System Vulnerabilities: Exploring the Dark Side of Social
+Networking Communities .................................................................................................................................................................39
+Steve Webb, James Caverlee, and Calton Pu
+An Invitation to Non-standard Analysis ............................................................................................................................................41
+Wei-Zhe Yang
+A Summary and Update of “Fuzzy Logic” .......................................................................................................................................42
+Lotfi A. Zadeh
+An Update and Summary of Multi-granular Computing and Quotient Structure .............................................................................45
+Ling Zhang and Bo Zhang
+Regular Papers
+Knowledge Representation and Expert Systems for Mineral Processing Using Infobright .............................................................49
+Alberto Rui Frutuoso Barroso, Greg Baiden, and Julia Johnson
+Detecting Communities Using Social Ties ........................................................................................................................................55
+Partha Basuchowdhuri and Jianhua Chen
+Optimal Factorization of Three-Way Binary Data ............................................................................................................................61
+Radim Belohlavek and Vilem Vychodil
+An Identity Based Proxy Signature Scheme Secure in the Standard Model .....................................................................................67
+Feng Cao and Zhenfu Cao
+Leveraging Cloud Computing in Geodatabase Management ............................................................................................................73
+Ariel Cary, Yaacov Yesha, Malek Adjouadi, and Naphtali Rishe
+Interval Type-2 Fuzzy Logic for Control Applications .....................................................................................................................79
+Oscar Castillo
+Finding Value Reducts Using Rough Multisets ................................................................................................................................85
+Chien-Chung Chan, Chen Chen, and Varundev Garikapati
+A Method for Incremental Updating Approximations when Objects and Attributes Vary
+with Time ..........................................................................................................................................................................................90
+Hongmei Chen, Tianrui Li, and Junbo Zhang
+A Method for Incremental Updating Approximations Based on Variable Precision Set-Valued
+Ordered Information Systems ...........................................................................................................................................................96
+Hongmei Chen, Tianrui Li, and Junbo Zhang
+On Partial Order Relations in Granular Computing ........................................................................................................................102
+Hongxing Chen, Yuhua Qian, Jiye Liang, and Wei Wei
+A Model of Scheduling Optimizing for Cloud Computing Resource Sevices Based
+on Buffer-pool Agent ......................................................................................................................................................................107
+Ming Chen, Mengkun Li, and Fuqin Cai
+vi
+An Improved Parallel FFT Algorithm and Application in Grid Environment ................................................................................111
+Ming Chen, Yong Li, and Jian Yue Zhang
+Mining Inconsistent Data with the Bagged MLEM2 Rule Induction Algorithm ............................................................................115
+Clinton Cohagan, Jerzy W. Grzymala-Busse, and Zdzislaw S. Hippe
+Enhancing Coordination and Cooperation Techniques Using the SODA Methodology ................................................................121
+Angela Consoli and Lakhmi Jain
+An Efficient Method for Correcting Vehicle License Plate Tilt .....................................................................................................127
+Kaushik Deb, Andrey Vavilin, and Kang-Hyun Jo
+Context-Based Semantic Approach to Ontology Creation of Maritime Information in Chinese ...................................................133
+Lijun Deng and Xiaofeng Wang
+A New Method of Data Reduction in Inconsistent Decision Tables ...............................................................................................139
+Shaobo Deng, Min Li, Sujie Guan, and Lian Chen
+A Decoupled Approach for Modeling Heterogeneous Dyadic Data with Covariates .....................................................................143
+Meghana Deodhar and Joydeep Ghosh
+Parallel Simultaneous Co-clustering and Learning with Map-Reduce ...........................................................................................149
+Meghana Deodhar, Clinton Jones, and Joydeep Ghosh
+A Topos Induced by Qualitative Mapping ......................................................................................................................................155
+Jiali Feng
+Cloud Computing for Large-Scale Weapon Systems ......................................................................................................................161
+Kevin D. Foster, John J. Shea, James Bret Michael, Thomas W. Otani, Loren Peitso,
+and Man-Tak Shing
+Removing the Boundaries: Steps Toward a Cloud Nirvana ............................................................................................................167
+Kevin D. Foster, John J. Shea, Doron Drusinsky, James Bret Michael, Thomas W. Otani,
+and Man-Tak Shing
+Microformats for Innovative Lexicons ............................................................................................................................................172
+Sunny Fugate, Jeffrey Ellen, and Stuart Rubin
+Granular Computing on Natural Intervals Partition of Attribute Values in Decision Systems .......................................................178
+Jianhe Guan and Ping Song
+Reducing Hierarchical Clustering Instability Using Clustering Based on Indiscernibility
+and Indiscernibility Level ................................................................................................................................................................182
+R.B. Fajriya Hakim, Subanar, and Edi Winarko
+Semi-supervised Fuzzy c-Means Clustering Using Clusterwise Tolerance Based Pairwise
+Constraints .......................................................................................................................................................................................188
+Yukihiro Hamasuna, Yasunori Endo, and Sadaaki Miyamoto
+Continuous-Valued Logic Algebra—Studies on the Basic of Mathematical Dialectical
+Propositional Logic .........................................................................................................................................................................194
+Huacan He, Pengtao Jia, Yingcang Ma, and Lirong Ai
+A New Automatic Categorization Algorithm for Web Services .....................................................................................................200
+Jiaying He, Peipei Li, Xuegang Hu, and Xindong Wu
+Document Relevance Identifying and its Effect in Query-Focused Text Summarization ..............................................................206
+Tingting He, Fang Li, and Liang Ma
+Optimal Design of Type-2 Fuzzy Membership Functions Using Genetic Algorithms in
+a Partitioned Search Space ..............................................................................................................................................................212
+Denisse Hidalgo, Patricia Melin, and Oscar Castillo
+Hierarchical, Granular Representation of Non-metric Proximity Data ...........................................................................................217
+Shoji Hirano and Shusaku Tsumoto
+vii
+FCA as a Tool for Inaccuracy Detection in Content-Based Image Analysis ..................................................................................223
+Zdenek Horak, Milos Kudelka, and Vaclav Snasel
+Adaptive Probabilistic Learning by Collectives in Dynamic Environments ...................................................................................229
+Chien-Feng Huang and Bao Rong Chang
+Development of Data Mining Platform MUSASHI Towards Service Computing .........................................................................235
+Kohei Ichikawa, Katsutoshi Yada, and Takashi Washio
+Elements of Sketching with Words .................................................................................................................................................241
+B. Mohammed Imran and M.M. Sufyan Beg
+Local Pattern Mining from Sequences Using Rough Set Theory ...................................................................................................247
+Ken Kaneiwa and Yasuo Kudo
+Finding Duplication Events Using GenomeVectorizer ...................................................................................................................253
+Elena Kochetkova and Tsau Young Lin
+Spatial Resolution for Processing Seismic Data: Type-2 Methods for Finding the Relevant
+Granular Structure ...........................................................................................................................................................................259
+Vladik Kreinovich, Jaime Nava, Rodrigo Romero, Julio Olaya, Aaron Velasco, and Kate C. Miller
+An Attribute Reduction Algorithm by Switching Exhaustive and Heuristic Computation
+of Relative Reducts .........................................................................................................................................................................265
+Yasuo Kudo and Tetsuya Murai
+Rule Induction from Information Tables with Ordinal Decision Attributes ...................................................................................271
+Yoshifumi Kusunoki, Masahiro Inuiguchi, Masanori Inoue, and Tetsuzo Tanino
+Determination of Epileptic Seizure Onset from EEG Data Using Spectral Analysis and Discrete
+Finite Automata ...............................................................................................................................................................................277
+Rory A. Lewis, Brian Parks, and Andrew M. White
+Mining Biomedical Knowledge Using Chi-Square Association Rule ............................................................................................283
+Guangrong Li and Xiaodan Zhang
+n-Strong-Direct-Product Formal Context ........................................................................................................................................286
+Mei-zheng Li and Ju-Sheng Mi
+Ontology Building from Incomplete Information System Based on Granular Computing ............................................................292
+Xiangjun Li, Taorong Qiu, Qing Liu, and Xiaoming Bai
+A Novel SVM Classification Method for Large Data Sets .............................................................................................................297
+Xiaoou Li, Jair Cervantes, and Wen Yu
+Incrementally Mining High Utility Itemsets in Dynamic Databases ..............................................................................................303
+Chun-Wei Lin, Tzung-Pei Hong, Guo-Cheng Lan, Hsin-Yi Chen, and Hung-Yu Kao
+Intuitionistic Fuzzy Rough Approximation Operators Based on Intuitionistic Fuzzy Triangle
+Norm ................................................................................................................................................................................................308
+Renbing Lin and Jiyi Wang
+Belief Functions and Probability for General Spaces ......................................................................................................................314
+Tsau Young (T.Y) Lin
+Approximate Reasoning Based on Upper Approximation ..............................................................................................................320
+Yan Lin, Mou Zhansheng, Li Fuyou, Liu Jinjin, and Zhang Zidong
+Lattices from Arbitrary Relations ....................................................................................................................................................326
+Guilong Liu
+Dynamic Biclustering of Microarray Data with MOPSO ...............................................................................................................330
+Junwan Liu and Yiming Chen
+viii
+Multi-threshold Ranking Model Based on Naive Bayes for Community-Ranked Article
+Submission Sites ..............................................................................................................................................................................335
+Nianzu Liu, Guanglin Xu, and Yongchang Liu
+Research on Cooperative Packet Forwarding and Punishment Mechanism in Wireless Sensor
+Networks .........................................................................................................................................................................................338
+Qun Liu, Xingping Xian, Songtao Guo, and Tao Wu
+Turing Machine on Attribute Theory ..............................................................................................................................................343
+Yue Luo and Jia-li Feng
+Towards Granular Data Placement Strategies for Cloud Platforms ................................................................................................346
+Johannes Lorey and Felix Naumann
+Face Recognition Based on Local Binary Patterns with Threshold ................................................................................................352
+Jun Meng, Yumao Gao, Xiukun Wang, Tsauyoung Lin, and Jianying Zhang
+A Prototype for Visualized Architecture Knowledge Collaboration Services ................................................................................357
+Teng-Sheng Moh and Ashish Kaul
+Two Rough Approximations for Information Tables Containing Missing Values .........................................................................363
+Michinori Nakata and Hiroshi Sakai
+Social Intelligence Design for Cultivating Shared Situated Intelligence ........................................................................................369
+Toyoaki Nishida
+Matching and Discovery Research of the Semantic Web Service Based on the Concept Lattice ..................................................375
+Tielei Ouyang, Xiaowei He, and Xiaoqiang Jiang
+Performing Intelligent Mobile Searches in the Cloud Using Semantic Technologies ....................................................................381
+Vishnu S. Pendyala and JoAnne Holliday
+Predictive PAC Learnability: A Paradigm for Learning from Exchangeable Input Data ...............................................................387
+Vladimir Pestov
+k-Anonymized Reducts ...................................................................................................................................................................392
+Lior Rokach and Alon Schclar
+Freight Data Mining Strategy Using Socio-economic Variables for Metropolitan Planning .........................................................396
+Nitin S. Sharma, Gregory A. Harris, Michael D. Anderson, Phillip A. Farrington, and James J. Swain
+A Probabilistic Approach to Apriori Algorithm ..............................................................................................................................402
+Vaibhav Sharma and M.M. Sufyan Beg
+The Concentric Circles Improvement Algorithm of College Entrance Examination Admission
+Model ...............................................................................................................................................................................................409
+Jia-hua Shen, Yi-tian Pan, and Yongchang Liu
+Efficient Algorithm for Discovering Potential Interesting Patterns with Closed Itemsets .............................................................414
+Raj Singh, Tom Johnsten, Vijay Raghavan, and Ying Xie
+Geo-clustering of Images with Missing GeoTags ...........................................................................................................................420
+Vishwakarma Singh, Sharath Venkatesha, and Ambuj K. Singh
+An Algorithm and Hardware Design for Very Fast Similarity Search in High Dimensional Space ..............................................426
+Vishwakarma Singh and Wenyu Jiang
+Infobright—Analytic Database Engine Using Rough Sets and Granular Computing ....................................................................432
+Dominik ?l?zak, Piotr Synak, Jakub Wróblewski, and Graham Toppin
+An Image Processing Tool for Efficient Feature Extraction in Computer-Aided Detection
+Systems ............................................................................................................................................................................................438
+Omer M. Soysal, Jianhua Chen, and Helmut Schneider
+Data Warehousing for Rough Web Caching and Pre-fetching .......................................................................................................443
+Sarina Sulaiman, Siti Mariyam Shamsuddin, and Ajith Abraham
+ix
+Shearlet Threshold Denoising Method Based on Two Sub-swarm Exchange Particle Swarm
+Optimization ....................................................................................................................................................................................449
+Hui Sun and Jia Zhao
+A Hybrid Web Recommender System Based on Cellular Learning Automata ..............................................................................453
+Mojdeh Talabeigi, Rana Forsati, and Mohammad Reza Meybodi
+Similarity and Clustering of Footwear Prints ..................................................................................................................................459
+Yi Tang, Sargur N. Srihari, and Harish Kasiviswanathan
+Trust-Based Decision Making in Dynamic Environments ..............................................................................................................465
+Will Tao and Jie Lu
+Efficient Mining of Generalized Negative Association Rules ........................................................................................................471
+Li-Min Tsai, Shu-Jing Lin, and Don-Lin Yang
+Common Visual Representation for Websites and Smartphones ....................................................................................................477
+Chris Tseng, Mohamed Ali, and Rohan Vibhandik
+Information Granules of Statistical Dependence in Multiway Contingency Tables .......................................................................483
+Shusaku Tsumoto and Shoji Hirano
+Geometrical and Combinatorial Nature of Pearson Residuals ........................................................................................................489
+Shusaku Tsumoto and Shoji Hirano
+A Multi-agent System Based on Variable Neighborhood Model ...................................................................................................495
+Seiki Ubukata, Yasuo Kudo, and Tetsuya Murai
+A Comparative Study of Threshold-Based Feature Selection Techniques .....................................................................................499
+Huanjing Wang, Taghi M. Khoshgoftaar, and Jason Van Hulse
+Hiding Sensitive Association Rules on Stars ..................................................................................................................................505
+Shyue-Liang Wang, Tzung-Pei Hong, Yu-Chuan Tsai, and Hung-Yu Kao
+A Robust Information Fuzzy Clustering Algorithm for Medical Image Segmentation ..................................................................509
+Zhimin Wang, Qing Song, Yeng Chai Soh, and Kang Sim
+Research on Deviant Behaviors in Social Tagging .........................................................................................................................515
+Jianliang Wei
+A Discrete Particle Swarm Optimization Algorithm for Domain Independent Linear Text
+Segmentation ...................................................................................................................................................................................519
+Ji-Wei Wu, Judy C.R. Tseng, and Wen-Nung Tsai
+A Trust Evaluation Model for Web Service with Domain Distinction ...........................................................................................525
+Jianbin Wu
+Fuzzy Rough Set Model Based on Multi-fuzzy Granulations .........................................................................................................530
+Mingfen Wu and Guangxue Kou
+Intuitionistic Fuzzy Rough Sets Determined by Intuitionistic Fuzzy Implicators ..........................................................................536
+Wei-Zhi Wu
+Searching Digital Political Cartoons ...............................................................................................................................................541
+Yejun Wu
+Study on Some Aspects of Qualitative Mapping Model .................................................................................................................546
+Zhixiong Wu
+GrC and SDG-Based Fault Diagnosis System and its Simulation Platform ...................................................................................550
+Keming Xie, Feng Zhan, Jingge Zhao, and Gang Xie
+Research and Implementation of Image Encryption Algorithm Based on Zigzag Transformation
+and Inner Product Polarization Vector ............................................................................................................................................556
+Xiaolin Xu and Jiali Feng
+x
+A Model of Cluster-Based Rough Set and its Application ..............................................................................................................562
+Yan Xu
+A New Kind of the Generalized R-implication on Interval-set .......................................................................................................568
+Zhan-ao Xue, Hao-cui Du, Hao-zhe Yin, and Yun-hua Xiao
+A Nonlinear Multiregression Model Based on the Choquet Integral with a Quadratic Core .........................................................574
+Nian Yan, Zhengxin Chen, Yong Shi, and Zhenyuan Wang
+Predicting Protein Secondary Structure Based on Compound Pyramid Model ..............................................................................580
+Bingru Yang, Lijun Wang, Wu Qu, and Yun Zhai
+The Application of ARIMA Model in Chinese Mobile User Prediction ........................................................................................586
+Xu Ye
+Efficient Parallel Algorithm for Nonlinear Dimensionality Reduction on GPU ............................................................................592
+Tsung Tai Yeh, Tseng-Yi Chen, Yen-Chiu Chen, and Wei-Kuan Shih
+A Clustering Method Based on the Most Similar Relation Diagram of Datasets ...........................................................................598
+Yan Yu, Yu Shan Bai, Wei Hong Xu, and Nan Li
+Knowledge Reduction Algorithm Based on Relative Conditional Partition Granularity ...............................................................604
+Jingling Yuan, Hongfu Du, and Luo Zhong
+Learning Multiple Latent Variables with Self-Organizing Maps ....................................................................................................609
+Lili Zhang and Erzsébet Merényi
+Implicative Pseudo-BCK Algebras and Implicative Pseudo-Filters of Pseudo-BCK Algebras .....................................................615
+Xiaohong Zhang and Hongjuan Gong
+From Tinnitus Data to Action Rules and Tinnitus Treatment .........................................................................................................620
+Xin Zhang, Zbigniew W. Ras, Pawel J. Jastreboff, and Pamela L. Thompson
+A Novel Two Sub-swarms Exchange Particle Swarm Optimization Based on Multi-phases ........................................................626
+Jia Zhao, Li Lü, Hui Sun, and Xing-wang Zhang
+Assessment of Emergency Response Policy Based on Markov Process ........................................................................................630
+Yafei Zhou, Mao Liu, and Liming Hu
+Probabilistic Soft Sets .....................................................................................................................................................................635
+Ping Zhu and Qiaoyan Wen
+A Double-Window-Based Classification Algorithm for Concept Drifting Data Streams ..............................................................639
+Qun Zhu, Xuegang Hu, Yuhong Zhang, Peipei Li, and Xindong Wu
+Application of Covering Rough Sets to Linguistic Dynamic Systems ...........................................................................................645
+William Zhu
+Short Papers
+Solving Course Timetabling Problem Using Interrelated Approach ..............................................................................................651
+Aftab Ahmed and Li Zhoujun
+Application of Cascading Rough Set-Based Classifiers on Authorship Attribution .......................................................................656
+Oguz Aslanturk, Ebru A. Sezer, Hayri Sever, and Vijay Raghavan
+Triadic Concept Analysis of Data with Fuzzy Attributes ...............................................................................................................661
+Radim Belohlavek and Petr Osicka
+Extension of Rough Set Theory Based on Strict Similarity Relation .............................................................................................666
+Meng Chen and Xin Xia
+A Unified Paradigm for the Accuracy of Classification Based on Granular Computing ...............................................................669
+Yongbing Chen, Shuang Liu, and Ping Ye
+Matrix Theory for Tolerance Granular Computing .........................................................................................................................673
+Zehua Chen and T.Y. Lin
+xi
+Analysis to the Contributions from Feature Attributes in Nonlinear Classification Based on
+the Choquet Integral ........................................................................................................................................................................677
+Jing Chu, Zhenyuan Wang, and Yong Shi
+A New Criterion of Delay-Range-Dependent Stability for Systems with Time-Varying Delay ....................................................683
+Songjian Dan and Haixia Wu
+An Enhanced P4P-Based Pastry Routing Algorithm for P2P Network ..........................................................................................687
+Zhengwei Guo, Lin Min, Shuai Yang, and Huaipo Yang
+Attack Detection by Rough Set Theory in Recommendation System ............................................................................................692
+Famei He, Xuren Wang, and Baoxu Liu
+Rough Sets in Partially Ordered Sets ..............................................................................................................................................696
+Kai Li, William Zhu, and Jianguo Tang
+An Algorithm for Attribute Reduction Based on Distance of Partitions .........................................................................................700
+Min Li, Shaobo Deng, Feng Shengzhong, and Jian-Ping Fan
+Knowledge Reduction of Incomplete Information Systems with Negative Decision Rules ...........................................................704
+Tong-Jun Li and Wei-Zhi Wu
+Using Feature Component for Spatial Data Modeling of GIS ........................................................................................................708
+Wei Li, Shuai Gong, and Xiaohui Wang
+Mining Algorithm of Maximal Frequent Itemsets Based on Position Lattice ................................................................................712
+Yuan Li, Jun Li, Ning An, and Chong Han
+Rough Lattices .................................................................................................................................................................................716
+Zuhua Liao, Lian Wu, and Miaohan Hu
+The Classification Study of Texture Image Based on the Rough Set Theory .................................................................................720
+Huang Lin, Ji-yi Wang, and Shuang Liu
+Type-2 Fuzzy Logic Controllers Optimization Using Genetic Algoritms and Particle Swarm
+Optimization ....................................................................................................................................................................................724
+Ricardo Martinez, Antonio Rodriguez, Oscar Castillo, and Luis T. Aguilar
+Interval Type-2 Fuzzy Logic Applications in Image Processing and Pattern Recognition ............................................................728
+Patricia Melin
+The Close-Degree of Concept Lattice and Attribute Reduction Algorithm Based on It .................................................................732
+Huili Meng and Jiucheng Xu
+Isomorphism Between Information Tables for Tolerance and Classical Rough Sets .....................................................................735
+Jun Meng, Tsauyoung Li, Zehua Chen, Xiukun Wang, and Peng Wang
+Assignment Reduct and its Calculation Method in Inconsistent Incomplete Decision System ......................................................739
+Zuqiang Meng, Zhongzhi Shi, and Hua Qin
+Generalized Relation Based Knowledge Discovery in Interval-valued Information Systems ........................................................743
+Duoqian Miao, Wei Yang, and Nan Zhang
+Classification and Discrimination Based on RS-PLS-DA ..............................................................................................................749
+Bin Nie, Jianqiang Du, Riyue Yu, Hongning Liu, Guoliang Xu, and Zhuo Wang
+Research of Support Vector Regression Algorithm Based on Granularity .....................................................................................752
+Lv Qing, Han Xiaoming, Xie Gang, Yan Gaowei, and Xie Jun
+A Similarity Measuring Method Between Image Regions Based on Granular Computing ............................................................755
+Jinling Shi and Genyuan Du
+An Improved Apriori Algorithm .....................................................................................................................................................759
+Yongge Shi and Yiqun Zhou
+xii
+Application of Chaotic Particle Swarm Optimization Algorithm in Chinese Documents
+Classification ...................................................................................................................................................................................763
+Dekun Tan
+Qualitative Simulation Based on Ranked Hyperreals .....................................................................................................................767
+Shusaku Tsumoto
+Association Action Rules and Action Paths Triggered by Meta-actions ........................................................................................772
+Angelina A. Tzacheva and Zbigniew W. Ras
+Research and Prediction on Nonlinear Network Flow of Mobile Short Message Based on Neural
+Network ...........................................................................................................................................................................................777
+Nianhong Wan, Jiyi Wang, and Xuerong Wang
+Pattern Matching with Flexible Wildcards and Recurring Characters ............................................................................................782
+Haiping Wang, Fei Xie, Xuegang Hu, Peipei Li, and Xindong Wu
+Supplier Selection Based on Rough Sets and Analytic Hierarchy Process .....................................................................................787
+Lei Wang, Jun Ye, and Tianrui Li
+The Covering Upper Approximation by Subcovering ....................................................................................................................791
+Shiping Wang, William Zhu, and Peiyong Zhu
+Stochastic Synchronization of Non-identical Genetic Networks with Time Delay ........................................................................794
+Zhengxia Wang and Guodong Liu
+An Extensible Workflow Modeling Model Based on Ontology .....................................................................................................798
+Zhenwu Wang
+Interval Type-2 Fuzzy PI Controllers: Why They are More Robust ...............................................................................................802
+Dongrui Wu and Woei Wan Tan
+Improved K-Modes Clustering Method Based on Chi-square Statistics .........................................................................................808
+Runxiu Wu
+Decision Rule Acquisition Algorithm Based on Association-Characteristic Information Granular
+Computing .......................................................................................................................................................................................812
+JianFeng Xu, Lan Liu, GuangZuo Zheng, and Yao Zhang
+Constructing a Fast Algorithm for Multi-label Classification with Support Vector Data
+Description ......................................................................................................................................................................................817
+Jianhua Xu
+Knowledge Operations in Neighborhood System ...........................................................................................................................822
+Xibei Yang and Tsau Young Lin
+An Evaluation Method Based on Combinatorial Judgement Matrix ..............................................................................................826
+Jun Ye and Lei Wang
+Generating Algorithm of Approximate Decision Rules and its Applications .................................................................................830
+Wang Yun and Wu-Zhi Qiang
+Parameter Selection of Support Vector Regression Based on Particle Swarm Optimization .........................................................834
+Hu Zhang, Min Wang, and Xin-han Huang
+T-type Pseudo-BCI Algebras and T-type Pseudo-BCI Filters ........................................................................................................839
+Xiaohong Zhang, Yinfeng Lu, and Xiaoyan Mao
+A Vehicle License Plate Recognition Method Based on Neural Network ......................................................................................845
+Xing-Wang Zhang, Xian-gui Liu, and Jia Zhao
+Author Index ........................................................................................................................................................................849
+xiii

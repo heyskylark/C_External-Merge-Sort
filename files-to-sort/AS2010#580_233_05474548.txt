@@ -1,0 +1,583 @@
+An Improvement in Apriori algorithm Using Profit And Quantity  
+Parvinder S. Sandhu 
+Professor (Deptt. Of CSE) 
+Rayat & Bahra Institute of 
+Engg. & Bio-Tech., 
+Mohali, India  
+  
+Dalvinder S. Dhaliwal 
+Asst Prof. (Deptt. Of CSE) 
+RIMIT Institute of            
+Engg. & Tech.,   
+Mandi Gobindgarh, India 
+S. N. Panda        
+Director & Professor,  
+Regional Institute of        
+Mgmt. & Tech.,  
+Mandi Gobindgarh, India 
+ 
+Atul Bisht 
+Lecturer (Deptt. Of CSE) 
+Rayat & Bahra Institute of 
+Engg. & Bio-Tech., 
+Mohali, India  
+ 
+ 
+ 
+ 
+ 
+Abstract— Association rule mining has been an area of active 
+research in the field of knowledge discovery and numerous 
+algorithms have been developed to this end. Of late, data 
+mining researchers have improved upon the quality of 
+association rule mining for business development by 
+incorporating the influential factors like value (utility), 
+quantity of items sold (weight) and more, for the mining of 
+association patterns. In this paper, we propose an efficient 
+approach based on weight factor and utility for effectual 
+mining of significant association rules. Initially, the proposed 
+approach makes use of the traditional Apriori algorithm to 
+generate a set of association rules from a database. The 
+proposed approach exploits the anti-monotone property of the 
+Apriori algorithm, which states that for a k-itemset to be 
+frequent all (k-1) subsets of this itemset also have to be 
+frequent. Subsequently, the set of association rules mined are 
+subjected to weightage (W-gain) and utility (U-gain) 
+constraints, and for every association rule mined, a combined 
+Utility Weighted Score (UW-Score) is computed. Ultimately, 
+we determine a subset of valuable association rules based on 
+the UW-Score computed. The experimental results 
+demonstrate the effectiveness of the proposed approach in 
+generating high utility association rules that can be lucratively 
+applied for business development.    
+Keywords- Association Rule Mining (ARM), Frequent itemset, 
+Utility, Weightage, Apriori, Utility gain (U-gain), Weighted gain 
+(W-gain), Utility factor (U-factor), Utility Weighted Score (UW-
+score). 
+ 
+I.  INTRODUCTION 
+Due to the wide availability of huge amounts of data and 
+imminent need for turning such data into useful information 
+and knowledge, data mining has attracted a great deal of 
+attention in the information industry in recent years  [1]. 
+Data mining is an important part of the process of 
+Knowledge Discovery in Databases (KDD) [22]. The 
+Knowledge Discovery in Databases (KDD) is defined as, 
+"The non-trivial extraction of implicit, previously unknown, 
+and potentially useful information from data" [6]. In general, 
+data mining tasks can be classified into two categories: 
+Descriptive mining and Predictive mining. Descriptive data 
+mining is the description of a set of data in a concise and 
+summarized manner and the presentation of the general 
+properties of the data. Predictive data mining is the process 
+of inferring patterns from data to make predictions [13]. One 
+important descriptive data mining technique, Association 
+Rule Mining (ARM) introduced by Agarwal et.al. [2], have 
+received considerable attention in data mining research and 
+applications. More and more computer science scholars and 
+researchers, especially those who specialize in the field of 
+Knowledge Discovery in Data (KDD), focus and emphasize 
+on Association Rule Mining (ARM) [14].  
+Association rule mining [2, 3] has been widely used to 
+solve data mining problems in numerous applications, 
+including financial analysis, the retail industry, and business 
+decision-making [4]. The problem with mining association 
+rules can be distilled into two steps. The first step involves 
+finding all frequent itemsets (or say large itemsets) in 
+databases. The next step is the generation of association 
+rules. Once the frequent itemsets are found, generating 
+association rules is straightforward and can be accomplished 
+in linear time [5]. The most important task of traditional 
+association rule mining (ARM) is to identify frequent 
+itemsets. Traditional ARM algorithms treat all the items 
+equally by assuming that the weightage of each item is 
+always 1 (item is present) or 0 (item is absent). Obviously, 
+it’s unrealistic and will lead to loss of some useful patterns 
+[7]. In order to overcome the weakness of the traditional 
+association rules mining, utility mining model [9] [10] and 
+weighted association rule mining [16] have been proposed.  
+Utility based data mining is a new research area 
+entranced in all types of utility factors in data mining 
+processes and focused at integrating utility considerations in 
+data mining tasks [15]. Utility of an item is a subjective term 
+dependent on users and applications; it could be measured in 
+terms of profit, cost, risk, aesthetic value or other expressions 
+of user preference [7]. Given a transaction database, a 
+minimum utility threshold, and a utility table, the goal of 
+utility mining is to discover all high utility itemsets [12]. The 
+profitability of an itemset or the total cost of stocking an 
+itemset cannot be determined using the support value alone. 
+Thus, in practical terms, utility mining can be more useful 
+than traditional association rule mining [12].  
+Second International Conference on Computer and Network Technology
+978-0-7695-4042-9/10 $26.00 © 2010 IEEE
+DOI 10.1109/ICCNT.2010.46
+3
+In weighted association rule mining (WARM) [16], 
+itemsets are no longer simply counted as they appear in a 
+transaction. This change of counting mechanism makes it 
+necessary to adapt traditional support to weighted support 
+[23]. Weighted Association Rules cannot only improve the 
+confidence in the rules, but also provide a mechanism to do 
+more effective target marketing by identifying or segmenting 
+customers based on their potential degree of loyalty or 
+volume of purchases [8]. For example, a customer may 
+purchase 13 bottles of coke and 6 bags of snacks and another 
+may purchase 4 bottles of coke and 1 bag of snacks at a time. 
+The conventional association rule approach treats the above 
+two transactions in the same manner, which could lead to the 
+loss of some vital information [8]. So, Weighted ARM deals 
+with the importance of individual items in a database [17, 18, 
+19]. For example, some products are more profitable or may 
+be under promotion, therefore more interesting as compared 
+to others, and hence rules concerning them are of greater 
+value [20]. 
+Recently, researchers are interested at incorporating both 
+the attributes (weightage and utility) for mining of valuable 
+association rules. The incorporation, Weighted Utility 
+association rule mining (WUARM) can be considered as the 
+extension of weighted association rule mining in the sense 
+that it considers items weights as their significance in the 
+dataset and also deals with the frequency of occurrences of 
+items in transactions. Thus, weighted utility association rule 
+mining is concerned with both the frequency and 
+significance of itemsets and is also helpful in identifying the 
+most valuable and high selling items which contribute more 
+to the company’s profit [21]. Here, we propose an efficient 
+approach based on weight factor and utility for effectual 
+mining of high utility association rules. Initially, the 
+proposed approach makes use of the traditional Apriori 
+algorithm to generate a set of association rules from a 
+database. Subsequently, the set of association rules mined are 
+subjected to: 1) weightage (W-gain) and 2) utility (U-gain) 
+constraints, and for every association rule mined, a combined 
+Utility Weighted Score (UW-Score) is computed. 
+Ultimately, we determine a subset of valuable weighted and 
+utility based association rules on the basis of the UW-score 
+computed. The experimental results demonstrate the 
+effectiveness of the proposed approach in mining high 
+weighted and utility based association rules that can be 
+lucratively applied for business development. 
+The rest of the paper is organized as follows: The section 
+2 explains the measures employed. The proposed approach 
+based on profit and quantity for mining utility-oriented 
+association rules is given in section 3. Section 4 sums up the 
+paper. 
+II. MEASURES EMPLOYED  
+Association Rule Mining (ARM), one of most commonly 
+used descriptive data mining task, is the process of 
+discovering a collection of data attributes that are statistically 
+related in the underlying data. Apriori has been recognized as 
+the most renowned algorithm for ARM. Most algorithms for 
+ARM including Apriori, mine potential data patterns chiefly 
+based on frequency. The data patterns thus extracted based 
+only on frequency would not be of the highest value for 
+decision makers in business development. Hence in recent 
+times, the incorporation of interestingness, utility and item 
+weightage into the standard association rule mining 
+algorithms have attracted voluminous research. In the 
+proposed approach, we have incorporated two of the 
+aforesaid measures together with Apriori for effectual 
+mining of association rules. The two attribute measures 
+chosen in the proposed research are:                                                      
+A. Weightage: 
+Generally in a transaction database, attributes comprise 
+of numerical assets that gives the actual quantity of the 
+attribute (count of the items) involved in the transaction. But 
+traditional algorithms like Apriori mine association rules 
+from a binary mapped database that only depicts the 
+presence of the item in a transaction or not. So, standard 
+ARM algorithms possibly overlook the quantitative 
+information associated with an attribute, leading to frequent 
+but less-weightage rules. In most cases of a customer 
+transaction, some of the attributes may be actually more 
+weighted in one transaction but it may not have occurred 
+frequently in the database. However, these set of attributes 
+would be of significant value in the business point of view 
+and should have been included in the frequent itemset. 
+Hence, the proposed research will consider the weightage 
+measure (W-gain) of the individual items in every 
+transaction, for mining a subset of most significant rules 
+from the set of frequent association rules mined.  
+                                                                                
+B. Utility: 
+The second measure employed in the proposed research 
+to improve the quality of ARM is the individual utility 
+(Gain) of the attributes. In general, a supermarket is likely to 
+consist of attributes (items) that will yield different margins 
+of profit. Hence, the rules mined without considering those 
+utility values (profit margin) will lead to a probable loss of 
+profitable rules.  So, to attain a subset of high utility rules 
+from the Apriori mined rules, the proposed approach makes 
+use of a utility measure (U-gain).   
+A plenty of researches [21, 24, 25, 26] have incorporated 
+the weightage and utility measures individually into ARM so 
+as to achieve effective rules from large databases. But, 
+possibly the incorporation of both the measures together into 
+ARM will enable more potential utility-oriented association 
+rules. In this research, we incorporate the two measures 
+weightage (W-gain) and utility (U-gain) to mine the 
+association rules from a transaction database.    
+                  
+III. PROPOSED METHODOLGY   
+Let D be a database consisting of n number of 
+transactions T and m number of attributes 
+],.....,,[ 21 miiiI =  with positive real number weights  Wi. 
+A utility table U comprising of m number of utility values 
+Ui, where Ui denotes the profit associated with the i 
+attribute. The major steps involved in the proposed approach 
+4
+for association rule mining based on weightage and utility 
+are: 
+Step1: Mining of association rules from D using Apriori. 
+Step 2: Computation of the measure W-gain.  
+Step 3: Computation of the measure U-gain. 
+Step 4:. Computation of UW-score from W-gain and U-
+gain. 
+Step 5: Determination of significant association rules 
+based on UW-score.  
+A. Association Rule Mining using Apriori 
+Initially, association rules are mined from a transaction 
+database D with n transactions. The database D is denoted 
+as: 
+?
+?
+?
+?
+?
+?
+?
+?
+?
+?
+?
+?
+=
+nT
+T
+T
+D
+M 
+2
+1
+ 
+(1) 
+Every transaction T in D comprises of ‘m’ number of 
+attributes ],.....,,[ 21 miiiI =  associated with it. Every 
+attribute i is represented by weights Wi.  
+Apriori, a standard ARM algorithm is used in the 
+proposed approach to mine the association rules. Classical 
+Apriori generally processes on a binary mapped database BT 
+for mining association rules. Hence, the input database D is 
+transformed to a binary mapped database BT that consists of 
+binary values 0 and 1 denoting the non-existence and 
+existence of attributes in the transactions respectively. The 
+weights Wi associated with the individual attributes in the 
+database D is mapped onto the binary values using the 
+following equation: 
+?
+?
+?
+??
+?=
+=
+ki
+ki
+T    0      Wif  1
+  T    0  Wif  0
+TB  
+(2) 
+     Subsequently, the binary mapped database TB is given 
+as an input to the Apriori algorithm [2] for mining of 
+association rules. Generally, the process of association rule 
+mining using Apriori is composed of two steps namely, 
+• Frequent Itemset Generation: Generate all possible 
+sets of attributes that have support value greater 
+than a predefined threshold, called minsupport.  
+• Association Rule Generation: Generate association 
+rules from the generated frequent itemsets that 
+have confidence greater than a predefined 
+threshold called minconfidence. 
+A standard association rule is of the structure: A?B, 
+where A (the antecedent) and B (the consequent) are subset 
+of items in the binary mapped database, such that, A ?  I, B 
+?  I and A ? B=? . The rule A?B is interpreted as “if A 
+exists then it is likely that B also co-exists”. The rule A ? B 
+holds in the transaction database D with a support S and 
+confidence C, if, S% of the transactions in D contains the 
+itemsets A and B, and C % of the transactions that contain 
+A also contain B. Hence: 
+Support (A ? B) = P (AUB) 
+ 
+(3) 
+Confidence (A ? B) = P (B|A) 
+= support (AUB)/ support (A) 
+(4) 
+     The pseudo code for the Apriori algorithm is: 
+ 
+ 
+ 
+      The apriori algorithm generates a k  number of 
+association rules }{ kRRRR ,......,, 21= . The set of 
+association rules R  is fed as input to the next phase of the 
+proposed research, weightage and utility computation. The 
+measures W-gain (weightage) and U-gain (utility) are 
+calculated for every attribute present in the k   association 
+rules of R . For example, say an association rule iR  of the 
+form, [A, B] ?  C, where, A, B and C are the attributes in 
+the rule iR , the measures U-gain, W-gain and UW-score are 
+calculated for every attribute A, B and C individually.  
+Initially, the k  association rules generated are first 
+sorted in descending order based on their confidence level.  
+The sorted list of association rules is given by 
+S = }{ ',......,',' 21 kRRR , RS ? , where conf ( '1R ) ?  
+conf ( '2R ) ? conf ( '3R )….. ? conf ( 'kR ). 
+B. Computation of W- gain  
+From the sorted list S , the first rule '1R  is selected and the 
+individual attributes of '1R  are determined. Subsequently, 
+the measure W-gain is calculated for every attribute in the 
+rule '1R  .  
+Definition 1: Item weight (Wi): Item weight is the 
+quantitative measure of the attribute contained in the 
+transaction database D . Item weight value Wi is a non-
+negative integer.  
+ 
+Definition 2: Weighted Gain (W-gain):
+ 
+W-gain is defined as 
+the sum of item weights iW  of an attribute contained in 
+5
+every transaction of the database D as shown in the 
+following equation: 
+ 
+W-gain =  ?
+=
+||
+1
+T
+i
+iW  
+(5) 
+                                                                                                                    
+Where, Wi is the item weight of an attribute and T  is 
+the number of transactions in the database D.
+ 
+C. Computation of U-gain: 
+Similarly, for U-gain computation, the first rule '1R   from 
+the sorted list S  is selected and the individual attributes of 
+'1R  are determined. Subsequently, the U-gain measure is 
+calculated for every individual attribute present in the 
+rule '1R , based on the U-factor and the utility value iU of 
+the attribute.  
+Definition 3: Item Utility (Ui): The Item utility is generally 
+defined as the margins of profit associated with that 
+particular attribute. It is denoted as iU .  
+Definition 4: Utility table U: The utility table U comprises 
+of ‘m’ utility values iU  associated with the attributes 
+present in the transaction database D. The utility table is 
+represented by: 
+?
+?
+?
+?
+?
+?
+?
+?
+?
+?
+?
+?
+=
+m
+2
+1
+U
+  M
+U
+U
+U  
+(6) 
+ Definition 5: Utility factor (U-factor): The utility factor (U-
+factor) is a constant that is determined by the sum of the all 
+items utility (Ui) contained in the utility table U .It is 
+defined as: 
+   U-factor =   
+?
+=
+m
+i i
+U
+1
+1
+ 
+ 
+(7) 
+     Where, m is the number of attributes present in the 
+transaction database. 
+ 
+Definition 6: Utility Gain (U-gain): Utility Gain refers to 
+the measure of an attribute’s actual utility based on the U-
+factor (as shown in equation 8). 
+U-gain= iU  * U-factor 
+ 
+(8) 
+      The measure U-gain is computed for every attribute in 
+the association rule '1R .  
+D. Computation of UW-score from W-gain and U-gain:  
+Based on the calculated W-gain and U-gain measures for the 
+individual attributes of an association rule, a single 
+consolidated value termed UW-score is computed for every 
+individual association rule.  
+Definition 7: Utility Weighted Score (UW-score): UW-
+score is defined as the ratio between the sum of products of 
+W-gain and U-gain for every attribute in the association rule 
+to the number of attributes present in the rule (as shown in 
+equation 9). 
+UW-score =  ||
+)()(
+||
+1
+R
+gainUgainW
+R
+i
+i?
+=
+???
+ 
+ 
+(9) 
+       Where, R  represents the numbers of attributes in the 
+association rule.  
+ 
+The aforesaid processes of W-gain, U-gain and UW-score 
+computation are repeated for the rest of the association 
+rules '2R  to 'kR present in the sorted list S . Now, all ‘k’ 
+number of association rules in the sorted list S  possess a 
+UW-Score associated with it. Subsequently, the association 
+rules in the sorted list S  are sorted based on the UW-score 
+to get 'S = }{ ",......,"," 21 kRRR where UW-score ( "1R ) 
+?  UW-score( "2R ) ?  UW-score( "3R )…… ? UW-score 
+( "kR ). 
+E. Determination of significant association rules based on 
+UW-score:  
+Finally, from the sorted list 'S , a set of significant weighted 
+utility association rules WUR  whose the UW-Score is above 
+a predefined threshold are selected. The resultant weighted 
+and utility based association rules is given 
+by },......,,{ 21 WUlWUWUWU RRRR = , where, lk ?  and 
+WUR  ?
+'S . 
+ 
+IV. CONCLUSION 
+We have proposed an efficient approach based on weight 
+factor and utility for effectual mining of high utility 
+association rules. Initially, the proposed approach has made 
+use of the traditional Apriori algorithm to generate a set of 
+association rules from a database. For every association rule 
+mined, a combined Utility Weighted Score (UW-Score) is 
+computed based on weightage (W-gain) and utility (U-gain) 
+constraints. Ultimately, we have determined a subset of 
+significant association rules based on the UW-Score 
+computed. 
+ 
+REFERENCES 
+[1] Ali Rajabzadeh Ghatari, Nasibeh Mohamadi, Aida Honarmand, 
+Parviz Ahmadi and Nasibeh Mohamadi," Recognizing & Prioritizing 
+6
+Of Critical Success Factors (CSFs) On Data Mining Algorithm's 
+Implementation In Banking Industry: Evidence From Banking 
+Business System", In Proceedings of EABR & TLC, Prague, Czech 
+Republic, 2009. 
+[2] R. Agrawal, T. Imielinski and A. Swami, “Mining association rules 
+between sets of items in large databases”, In proceedings of the 
+international Conference on Management of Data, ACM SIGMOD, 
+pp. 207–216, Washington, DC, May 1993. 
+[3] R. Agrawal and R. Srikant, “Fast algorithms for mining association 
+rules”, In Proceedings of 20th International Conference on Very 
+Large Data Bases, Santiago, Chile, pp. 487–499, September 1994. 
+[4] M. S. Chen, J. Han, P.S. Yu, “Data mining: an overview from a 
+database perspective”, IEEE Transactions on Knowledge and Data 
+Engineering, vol. 8, no.6, pp. 866–883, 1996. 
+[5] Chun-Jung Chu, Vincent S. Tseng and Tyne Liang, "Mining temporal 
+rare utility Itemsets in large databases using relative utility 
+thresholds", International Journal of Innovative Computing, 
+Information and Control, Vol. 4, no. 11, November 2008. 
+[6] Frawley, W., Piatetsky-Shapiro, G., Matheus, C., “Knowledge 
+Discovery in Databases: An Overview”, AI Magazine, fall 1992, pp. 
+213-228, 1992. 
+[7] Guangzhu Yu, Shihuang Shao and Xianhui Zeng, "Mining Long High 
+Utility Itemsets in Transaction Databases", WSEAS Transactions On 
+Information Science & Applications, vol.5, no. 2, pp.202-210, 
+February 2008. 
+[8] A.M.J. Md. Zubair Rahman and P. Balasubram, "Weighted Support 
+Association Rule Mining using Closed Itemset Lattices in Parallel", 
+International Journal of Computer Science and Network security, Vol. 
+9  No. 3  pp. 247-253, March 2009. 
+[9] Hong Yao, Howard J. Hamilton, and Cory J. Butz, “A Foundational 
+Approach to Mining Itemset Utilities from Databases”, In 
+Proceedings of the Third SIAM International Conference on Data 
+Mining, pp. 482-486, Orlando, Florida, 2004. 
+[10] Jing Wang, Ying Liu, Lin Zhou, Yong Shi, and Xingquan Zhu, 
+"Pushing Frequency Constraint to Utility Mining Model", In 
+Proceedings of the 7th international conference on Computational 
+Science, pp.685 - 692, Beijing, China, 2007. 
+[11] Jianying Hu and Aleksandra Mojsilovic, "High-utility pattern mining: 
+A method for discovery of high-utility item sets", Pattern 
+Recognition, vol. 40, no. 11, pp.3317-3324, November 2007. 
+[12] Yu-Chiang Li , Jieh-Shan Yeh and Chin-Chen Chang, "Isolated items 
+discarding strategy for discovering high utility itemsets", Data & 
+Knowledge Engineering, vol.64, no.1, pp.198-217, January 2008. 
+[13] J. Han and Y. Fu, “Attribute-Oriented Induction in Data Mining,” 
+Advances in Knowledge Discovery and Data Mining, AAAI 
+Press/The MIT Press, pp. 399- 421, 1996. 
+[14] Bing Liu, Wynne Hsu, Ke Wang, and Shu Chen, “Visually Aided 
+Exploration of Interesting Association Rules”, In Proceedings of the 
+Third Pacific-Asia Conference on Methodologies for Knowledge 
+Discovery and Data Mining, pp.380 - 389, 1999. 
+[15] Shankar.S, Babu Nishanth, T. Purusothaman and Jayanthi. S., "A Fast 
+Algorithm for Mining High Utility Itemsets", In proceedings of IEEE 
+International Advance Computing Conference, Patiala,India, 2009. 
+[16] Ke Sun and Fengshan Bai, "Mining Weighted Association Rules 
+without Preassigned Weights", IEEE Transactions on Knowledge and 
+Data Engineering, Vol. 20, no. 4, April 2008. 
+[17] Cai. C.H., Fu. A.W.C., Cheng. C. H and Kwong. W.W, “Mining 
+Association Rules with Weighted Items”, In Proceedings of the 
+International Symposium on Database Engineering and Applications, 
+pp. 68-77, Cardiff, Wales, UK, July 1998. 
+[18] Wang. W., Yang. J and Yu. P. S, “Efficient Mining of Weighted 
+Association Rules (WAR)”, In Proceedings of the KDD, pp. 270-274, 
+Boston, MA, August 2000. 
+[19] Lu, S., Hu, H., Li, F, “Mining Weighted Association Rules”, 
+Intelligent Data Analysis, vol.5 , no. 3, pp.211 - 225, August 2001. 
+[20] M. Sulaiman Khan, Maybin Muyeba and Frans Coenen, "Fuzzy 
+Weighted Association Rule Mining with Weighted Support and 
+Confidence Framework", International Workshops on New Frontiers 
+in Applied Data Mining, Osaka, Japan, pp. 49 - 61, May 20-23, 2009. 
+[21] M. Sulaiman Khan, Maybin Muyeba and Frans Coenen, "A Weighted 
+Utility Framework for Mining Association Rules", In proceedings of 
+European Symposium on Computer Modeling and Simulation,pp.87-
+92,Liverpool, September 2008. 
+[22] Oded Z. Maimon, Lior Rokach, "Decomposition Methodology for 
+Knowledge Discovery and Data Mining: Theory and Applications", 
+World Scientific Publishing Company, ISBN-13: 9789812560797, 
+May 2005. 
+[23] Feng Tao, Fionn Murtagh and Mohsen Farid, "Weighted Association 
+Rule Mining using Weighted Support and Significance Framework", 
+In Proceedings of the International Conference on Knowledge 
+Discovery and Data Mining, pp.661 - 666, Washington, 2003. 
+[24] Hong Yaoa and Howard J. Hamilton, “Mining itemset utilities from 
+transaction databases", Data & Knowledge Engineering, vol. 59, no. 
+3, pp. 603-626, December 2006.  
+[25] Chun-Jung Chua, Vincent S. Tsengb and Tyne Liang, "An efficient 
+algorithm for mining high utility itemsets with negative item values in 
+large databases", Applied Mathematics and Computation, vol. 215, 
+no.2, pp. 767-778, 2009. 
+[26] Unil Yuna, "Efficient mining of weighted interesting patterns with a 
+strong weight and/or support affinity", Information Sciences, vol. 
+177, no. 17, pp. 3477-3499, September 2007. 
+ 
+ 
+  
+7

@@ -1,0 +1,352 @@
+Notice of Retraction 
+ 
+ 
+ 
+ 
+ 
+After careful and considered review of the content of this paper by a duly 
+constituted expert committee, this paper has been found to be in violation of 
+IEEE's Publication Principles. 
+ 
+We hereby retract the content of this paper. Reasonable effort should be made to 
+remove all past references to this paper. 
+ 
+The presenting author of this paper has the option to appeal this decision by 
+contacting TPII@ieee.org. 
+Study on Customer Retention under Dynamic Markets
+Zeling Wang
+Laboratory of Supply Chain and Industry Engineering
+School of Economics and Management
+Tongji University
+Shanghai, P.R.China, 200092
+wangzeling66@gmail.com
+Xinghui Lei 1,2
+1Graduate School
+2School of Economics and Management
+Tongji University
+Shanghai, P.R.China, 200092
+leixh@online.sh.cn
+Abstract—Customer retention is increasingly pressing issue in
+today’s competitive commercial arena. This is relevant and
+important for sales and services related industries. Practicing
+customer relationship management (CRM) demands the ability
+to explore the strategy of customer retention. Despite existing
+the importance of customer retention to CRM, there is a
+lack of a comprehensive and effective approach to realize
+it under dynamic markets. Identifying customer segments
+and tracking their change over time, mining the pattern
+of customer segmentation are important applications for
+companies who need to understand what their customers
+expect from them now and in the future. This is significant
+for companies who operate in dynamic markets better fit the
+needs and wants of customers who, driven by new innovations
+and competing products. In this paper, we present a model for
+customer retention which accounts for the dynamics of today’s
+markets. Our study provides a new road-map to guide future
+research concerning the application of data mining techniques
+in customer retention under dynamic markets.
+Keywords–data mining; association rule mining; customer
+relationship management; customer retention
+I. INTRODUCTION
+Customer retention is an important strategy in modern
+business to keep a company’s customers and to retain their
+revenue contribution. Customer retention is the driving force
+behind customer relationship management (CRM), relation-
+ship marketing and loyalty marketing.
+Studies across a number of industries have revealed that the
+cost of retaining an existing customer is only about 10% of
+the cost of acquiring a new customer, so customer retention
+is essential for a company.
+Customer retention is the central concern for CRM. As
+such, traditionally, elements of customer retention include
+one-to-one marketing, loyalty programs and complaints man-
+agement. One-to-one marketing refers to personalized mar-
+keting campaigns which are supported by analyzing, detect-
+ing and predicting changes in customer behaviors [1]. Loyalty
+programs involve campaigns or supporting activities which
+aim at maintaining a long term relationship with customers.
+References [2-3] are concerned with the discovery of interest-
+ing association relationships, which are above an interesting
+threshold, hidden in databases. Selected association rules can
+be used to build a model for predicting the value of a future
+customer.
+The application of data mining tools in customer retention
+is an emerging trend in the global economy. Analyzing and
+understanding customer behaviours and characteristics is the
+foundation of the development of a competitive customer
+retention strategy, so as to acquire and retain potential
+customers and maximize customer value. Appropriate data
+mining tools, which are good at extracting and identifying
+useful information and knowledge from enormous customer
+databases, are one of the best supporting tools for making
+different customer retention decisions. As such, the applica-
+tion of data mining techniques in customer retention is worth
+pursuing in a customer-centric economy.
+When we hear about customer retention, we firstly think
+about customer segmentation. the segmentation approach is
+to a large extent goal driven and static. That means the data
+that is used has been collected with the assumption that it
+is ultimately relevant for segmentation. Data or attributes not
+considered to be relevant are dropped from the analytical
+process early on to make cluster analysis feasible and aid
+the interpretation of detected clusters which is essential to
+form meaningful segments. The danger of this approach
+is that potentially relevant features are ignored meaning
+certain segments may not be detected. The approach is also
+static, which means that once segments have been established
+change in those segments is not monitored because of the
+practical repercussions like regularly running expensive sur-
+veys, etc. This results in missing important trends, threats and
+opportunities because segments can change in several ways.
+New groups can appear, disappear, merge, move, shrink or
+grow [4]. Secondly, we think about association rules among
+customers, the discovery of interesting changes based on the
+static customer segmentation.
+In manufacturing and business processes, with rising living
+standards and advances in production capacity, the traditional
+static customer retention mode can no longer effectively meet
+the needs of customers, who are looking for uniqueness,
+innovation and novelty. However, there is a lack of a com-
+prehensive and effective approach to realize it under dynamic
+markets.
+2010 Second International Conference on Networks Security, Wireless Communications and Trusted Computing
+978-0-7695-4011-5/10 $26.00 © 2010 IEEE
+DOI 10.1109/NSWCTC.2010.279
+5154
+In this paper, we use clustering and frequent itemset
+discovery for detecting interesting pattern in data on different
+time period. We first propose a method to improve the
+reliability of customer segmentation, then detect interesting
+changes in a customer segment, by analysing the support
+of the itemset along the time axis. The starting point of
+such an approach is as follows: A timestamped data set is
+partitioned into intervals along the time axis. Frequent itemset
+discovery is then applied to each of these subsets. This yields
+sequences of support for each itemset, which can be analyzed
+further. They allow us to make statements about the future
+development of a customer segment and thus provide a basis
+for customer retention.
+II. RELATED WORK
+A. Customer Segmentation
+Customer segmentation is the process of dividing cus-
+tomers into homogeneous groups on the basis of common
+attributes. In most application customer segmentation is ac-
+complished by defining numerical attributes, which describe
+a customer’s value based on economical and market consid-
+erations. Cluster algorithms are then commonly employed in
+order to discover groups of customers with similar attribute
+values. Segmentation methods based on clustering require a
+user to carefully select the used attributes by hand in a tedious
+process. Since the number of used attributes is rather low,
+commonly only two or three, the analysis of segment change
+can still be done manually. This might be the reason why to
+our knowledge no automated approach has been published
+yet.
+Some approaches have been proposed to analyse changes
+in customer behavior, for instance in retail marketing [5],
+in an insurance company [6], These approaches typically
+compare two sets of rules generated from datasets of two
+different periods.
+B. Association Rules
+In the area of association rules, the discovery of interesting
+changes has been studied by several authors [7-8]. Associa-
+tion rule mining and other methods are often used to discover
+the patterns of domains. For instance, Xu et al. [9] employed
+association rule mining to find the interesting patterns with
+the help of intuitionistic fuzzy set and ?-cuts in supplier do-
+main. In the meantime, in order to express the conscientious
+and careful of academy, authors of reference [9] declared that
+as a poster paper included in the proceedings, is not the final
+manuscript but the mistaken submission.
+C. Selection Attribute for Customer Segmentation
+Every customer database has many attributes usually,
+attribute(feature) selection will be important to customer
+segmentation. Its merit lies in the fact that each attribute
+selected corresponds uniquely to a instance which could
+become a target of interest itself. There are four strategies for
+the ranking of attribute selection: individual ranking, group
+ranking, forward selection (FS), and backward elimination
+(BE) [10] .
+The individual ranking scheme is the simplest to process-
+ing. It only considers the individual feature rankings. This
+happens to be one of the most popular as it is computationally
+most efficient. It requires an amount of order of O(M),
+assuming that there are originally M features. However, it
+fails to take into account the inter-feature redundancy that
+abound in data. For example, it is very possible that the
+two highest-rank individual features share a great degree of
+similarity. As a result, the selection of both features would
+amount to a wastage of resources.
+This problem can be solved if the exhaustive group ranking
+is adopted. The relevance/redundancy of all the features in a
+group is examined collectively. This of course leads to a truly
+optimal decision. While the group ranking strategy is the only
+means to yield a truly optimal selection, it is computationally
+prohibitive, if not impossible. More exactly, in order to find
+the best combination of features, an exhaustive search would
+entail each of the 2M possible combinations. So, it is rarely
+adopted in practice because of its demanding computational
+cost.
+It is necessary to strike a compromise between these two
+extreme approaches. In this sense, one effective solution is
+the consecutive search approach, which falls into two main
+categories: FS and BE [11].
+• Forward Selection: Such a search usually begins at an
+empty feature set, and iteratively adds features based on
+how much added value it brings to the existing subset. A
+key drawback is that once a feature is admitted, it cannot
+be discarded. The selection pool is recursively updated
+as follows: S ?? S+, where S and S+ denote the sub-
+sets before and after the update. It recursively evaluates
+every candidate feature to be added into the current set
+on a one-by-one basis. The evaluation considers fully
+the inter-feature dependence with respect to the current
+subset.
+• Backward Elimination: This approach begins with the
+full feature set and then eliminate those that do not
+make a significant contribution, i.e. those whose absence
+causes the smallest negative impact in terms of the net
+information loss. A key drawback is that once a feature
+is eliminated, it cannot be reselected in the future. The
+selection pool is recursively updated as follows: S ??
+S?, where S and S? denote the subsets before and
+after the update. It recursively evaluate every features in
+the current set to be eliminated on a one-by-one basis.
+Such an approach takes into account the inter-feature
+dependence existing in the current subset.
+Forward selection is usually effective when a relative small
+number of features (from a much larger feature set) are to
+5165
+[
+[
+[
+Fig. 1. With inter-feature redundancy
+be selected and retained. Backward elimination is usually
+preferred when relative few features are to be eliminated from
+the original feature set.
+Under the Gaussian distribution, the mutual information is
+given in equation 1,
+I(x|y) = U(y) =
+1
+2
+log2(|Ry |) +
+M
+2
+log2(2?e) (1)
+where U(y) denotes entropy, and Ry denotes the covariance
+matrix.
+For illustration purpose, we assume that the dimension of
+the feature is M = 3 and our objective is to select one or two
+features from the original three features (A, B, and C) which
+represented by x1, x2, and x3 (shown in Fig. 1). We set this
+example based on FS. Moreover, the distribution of data is
+assumed to be Gaussian, assuming Gaussian distribution with
+a different covariance matrix:?
+? 500 420 200420 450 0
+200 0 400
+?
+?
+Mathematically, the inter-feature redundancy can be effec-
+tively dealt with by the entropy formula in Equation 1. For
+this example, y=[x1,x2]T . Thus,
+Ry =
+(
+500 420
+420 450
+)
+this leads to
+U(x1, x2) = log2(|Ry|) +
+2
+2
+log2(2?e) (2)
+The area-A represents the entropy of x1 (= 6.53), area-B
+the entropy of x2 (= 6.45) and area-C the entropy of x3 (=
+6.37)( Entropy of A, B, and C are under the condition of no
+redundancy). It follows that the entropy of [x1, x2] = 11.88,
+entropy of [x1,x3] = 12.74, and entropy of [x2, x3] = 12.82.
+The total entropy for [x1,x2, x3] is 16.37.
+A has substantial overlaps with B and C, as depicted by
+Fig. 1. As previously discussed, A will be chosen in the first
+round. In the second round of selection, C will be a better
+choice to pair up with A, even though U(C) < U(B). So, the
+pair to be selected is {A, C}. In this paper , we will choose
+FS as the method to select and optimize the attributes. This
+is a key step for customer segmentation.
+D. Association Rules for Pattern under Time Period
+The achieved segmentation can be discovered by associa-
+tion rule mining to find the pattern. In this paper, we will find
+the pattern according to the time period. The support can be
+employed to check the tendency. For example, suppose that
+we may discover that the support of the itemset Age> 60
+and Satisfaction=Yes has a upward trend. This, in turn, can be
+interpreted as that the group of all satisfied customers over 60
+steadily gets bigger. So the change pattern can be discovered
+in time. customer retention strategy can be adjusted according
+to the changed pattern.
+III. PROPOSED MODEL
+The proposed model can be shown in Fig. 2 based on the
+dynamic markets.
+IV. CONCLUSIONS
+Customer retention is and increasingly pressing issue in
+today’s competitive commercial arena. This is relevant and
+important for sales and services related industries. Practicing
+CRM demands the ability to explore the strategy of customer
+retention. Compared to the static customer retention model,
+this paper proposed a novel customer retention model through
+identifying customer segments and tracking their change over
+time, mining the pattern of customer segmentation are impor-
+tant application for enterprise who need to understand what
+their customers expect from them now and in the future. This
+is significant for enterprise which operate in dynamic markets
+better fit the needs and wants of customers who, driven by
+new innovations and competing products. Our study provides
+a new road-map to guide future research concerning the
+application of data mining techniques in customer retention
+under dynamic markets.
+REFERENCES
+[1] T. Brijs, G. Swinnen, K. Vanhoof and G. Wets, ”Building an association
+rules framework to improve product assortment decisions,” Data Mining
+and Knowledge Discovery, vol. 8, pp. 7–23, 2004.
+[2] K. Wang, S. Zhou, Q. Yang and J. M. S. Yeung, “Mining customer
+value: From association rules to direct marketing,” Data Mining and
+Knowledge Discovery, vol. 11, pp. 58–79, 2005.
+[3] B. G. Matthew and C. Randell, “Creating a competitive advantage in
+global trade,” Global Data Mining, 2006.
+[4] M. Buettcher, M. Spott, D. Nauck and R. Kruse, “Mining changing
+customer segmentation in dynamic markets,” Expert systems with Ap-
+plications, vol. 36, pp. 155–164, 2009.
+[5] M. C. Chen, A. L. Chiu and H. H. Chang, “Mining changes in customer
+behavior in retail marketing,” Expert Systems with Applications, vol. 28,
+pp. 773–781, 2005.
+[6] J. K. Kim, H. S. Song, T. S. Kim and H. K. Kim, “Detecting the change
+of customer behavior based on decision tree analysis,” Expert Systems,
+vol. 22, pp. 193–205, 2005.
+[7] R. Agrawal and G. Psaila, “Active data mining,” Proceedings of the First
+International Conference on Knowledge Discovery and Data Mining, pp.
+3–8, 1995.
+5176
+)HDWXUHDWWULEXWH6HOHFWLRQ)RUZDUG6HOHFWLRQ
+&KRRVH'LVWDQFH)XQFWLRQ'[\ 
+'DWDEDVH
+                 &ODVVLILFDWLRQ
+            &XVWRPHU6HJPHQWDWLRQ
+                &KDQJHG3DWWHUQ
+     $VVRFLDWLRQUXOHPLQLQJZLWKWLPHSHULRG
+3DWWHUQ$GMXVW WKH6WUDWHJ\RI
+FXVWRPHU
+UHWHQWLRQ   
+Fig. 2. Customer retention Model under dynamic markets
+[8] B. Liu, W. Hsu, H. S. Han and Y. Xia, “Mining changes for reallife
+applications,” Proceedings of the Seventh International Conference on
+Data Warehousing and Knowledge Discovery, pp. 337–346, 2005.
+[9] X. Xu, J. Lin and D. M. Xu, “Mining pattern of supplier with the
+methodology of domain-driven data mining,” Proeedings of IEEE the
+Seventeenth International Conference on Fuzzy Systems, pp. 1925–
+1930, 2009.
+[10] D. koller and M. Sahami, “Toward optimal feature selection,” Proceed-
+ings of the Thirteenth International Conference on Machine Learning,
+pp. 284–292, 1996.
+[11] X. Xu, K. Wang, J. Lin and W. M. Ma, “Improving the reliability of
+case-based reasoning systems,” International Journal of Computational
+Intelligence Systems, in press.
+5187

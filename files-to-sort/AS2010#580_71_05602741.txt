@@ -1,0 +1,710 @@
+SICE Annual Conference 2010 
+August 18-21, 2010, The Grand Hotel, Taipei, Taiwan 
+ 
+ 
+¥400 © 2010 SICE 
+Analysis of Various Interestingness Measures in
+Classi?cation Rule Mining for Traf?c Prediction
+Xianneng Li, Shingo Mabu, Huiyu Zhou, Kaoru Shimada and Kotaro Hirasawa
+Graduate School of Information, Production and Systems, Waseda University
+Hibikino 2-7, Wakamatsu-ku, Kitakyushu, 808-0135, Japan
+Email: sennou@asagi.waseda.jp, mabu@aoni.waseda.jp, zhy836@toki.waseda.jp,
+k.shimada@fuji.waseda.jp and hirasawa@waseda.jp
+Abstract—Recently, an evolutionary algorithm named Genetic
+Network Programming with Estimation of Distribution Algo-
+rithm (GNP-EDA) has been proposed and applied to extract
+classi?cation rules for solving traf?c prediction problems. The
+measures such as the support, con?dence and ?2 value are
+adopted to evaluate the interestingness of a large number of rules
+extracted from traf?c databases in the above data mining method.
+In data mining, many other measures have been proposed
+to evaluate the interestingness of association patterns. These
+measures usually provide different and con?icting results. Many
+studies investigate that the effects of different measures depend
+on the concrete applications. We rarely know what measures
+are the appropriate ones for the traf?c prediction application.
+Therefore, a novel approach to select the right measure for the
+classi?cation rule mining has been proposed in this paper. The
+simulation results show that the proposed interestingness measure
+selection approach is a powerful tool to select the right measure
+for the traf?c prediction application, leading to the increase of
+the classi?cation accuracy.
+Keywords—Interestingness Measure, Classi?cation Rule Min-
+ing, Genetic Network Programming, Estimation of Distribution
+Algorithm, Traf?c Prediction.
+I. INTRODUCTION
+Generally, association rule mining [1] and classi?cation
+rule mining [2] are the two most popular techniques in data
+mining. Both of association rules and classi?cation rules are
+represented as if-then type rules. However, there are some
+differences between them. Association rules are generally used
+as descriptive tools, which give the association relationships
+to the speci?c application experts, while classi?cation rules
+are used for predicting the unseen testing data. Therefore, the
+evaluations of the two type of rules are different. Association
+rules are typically evaluated by the application experts, while
+classi?cation rules are evaluated by the classi?cation accuracy
+of testing data.
+In order to discover the strongly correlated rules, many
+kinds of measures have been proposed to evaluate the inter-
+estingness of patterns, such as famous support and con?dence
+[1]. However, there are so many measures proposed and
+different measures have different properties which usually lead
+to different and con?icting results. Some studies investigate
+that there is no optimal measure which is better than others in
+all applications [3][4]. Therefore, given a speci?c application,
+?nding the appropriate measure becomes the essential problem
+in data mining.
+Some authors have studied intensively to analyze different
+interestingness measures used by data mining and select the
+appropriate one for given applications. As one of the most
+famous approaches, Tan et al. proposed a method to help the
+selection of right measure from the list of 21 measures [3].
+Moreover, Lenca et al. proposed a different approach which
+uses an Multiple Criteria Decision Aid (MCDA) method on
+20 classical interestingness measures with users’ objectives.
+However, both of them focus on selecting the right measure
+for association rule mining, in which the users need the
+speci?c application experts to provide the expected results or
+objectives. In Tan et al.’s paper, the proposed method is based
+on the hypothesis that the expected ranking of rules is provided
+by ?-coef?cient. Lenca et al. assume two scenarios, where the
+experts accept or refuse the appearance of a certain number
+of count-examples1 to ?nd appropriate measures.
+However, in classi?cation rule mining, the most important
+point to evaluate the quality of rules is the classi?cation
+accuracy. Therefore, there usually is not expert which could
+provide the expected results. For classi?cation rule mining,
+given a speci?c application, the interestingness measure which
+can provide the highest classi?cation accuracy would be the
+appropriate measure.
+Recently, as an extension of Genetic Network Programming
+(GNP) [5][6][7], a novel evolutionary algorithm called GNP
+with Estimation of Distribution Algorithm (GNP-EDA) has
+been proposed and applied to classi?cation rule mining to ?nd
+time-related classi?cation rules for solving traf?c prediction
+problems [8][9][10]. In this algorithm, three measures like
+support, con?dence and ?2 value cooperate to evaluate the
+interestingness of classi?cation rules. Support and con?dence
+are the two most frequently used measures in data mining.
+However, we rarely know what measures are the appropriate
+ones for the traf?c prediction application. Therefore, the
+appropriate measure is necessary to be found.
+In this paper, a novel interestingness measures selection ap-
+proach is proposed for classi?cation rule mining. The proposed
+approach is studied in the speci?c traf?c prediction applica-
+tion. With the right selection of interestingness measures, the
+better rules could be discovered from the traf?c databases,
+1Given two attributes X and Y , the count-examples denote the count of
+itemsets that if X is true, then Y is false.
+PR0001/10/0000-1969- 1969 -
+TABLE I
+THE CONTINGENCY TABLE OF X AND Y .
+Y ¬Y
+X nXY nXY nX¬X n
+XY
+n
+XY
+n
+X
+nY nY N
+N : the total number of tuples.
+nX : the number of tuples where X is satis?ed.
+n
+X
+: the number of tuples where X is not satis?ed.
+nY : the number of tuples where Y is satis?ed.
+nXY : the number of tuples where X and Y are satis?ed.
+n
+XY
+: the number of tuples where X is satis?ed but Y is not.
+n
+XY
+: the number of tuples where X and Y are not satis?ed.
+which lead to a higher classi?cation accuracy.
+II. INTERESTINGNESS MEASURES
+As powerful tools, interestingness measures are widely
+used in data mining. Measures can be used to discover the
+interesting patterns and rank/?lter them according to the scores
+of interestingness. For a given rule X ? Y , various measures
+are usually de?ned using the frequency counts as shown in
+Table I. Recently, many interestingness measures have been
+proposed for discovering and ?ltering rules in data mining.
+Table II presents a list of widely used measures studied in
+this paper.
+TABLE II
+LIST OF INTERESTINGNESS MEASURES.
+Measure Formula
+Support nXYN
+Con?dence nXYnX
+Laplace nXY +1nX+2
+Conviction nXnYn
+XY
+N
+Piatetsky-Shapiro’s measure (PS) nXY ? nXnYN
+Lift nXY NnXnY
+Certainty Factor (CF) nXY N?nXnYnXN?nXnY
+All-con?dence nXYmax{nX ,nY }
+Cosine nXY?nXnY
+?2 value
+?
+AllCells
+(Observation?Expectation)2
+Expectation
+Support and con?dence are the most two famous and
+frequently used measures in data mining. Support is useful
+to prune the uninteresting rules [11][12], while con?dence
+is often used to measure the accuracy of extracted rules [3]
+and estimate the classi?cation results [2]. However, the major
+drawback of support and con?dence is that they usually tend
+to generate a large quantity of rules.
+Some studies have investigated that both generality and
+reliability should be included in a good measure, where
+support and con?dence are generally used to represent them,
+respectively [13]. For example, Bayardo et al. [14] proved that
+many well-known measures such as laplace, conviction, gini
+and lift are monotone functions of support and con?dence. In
+this paper, we restrict the list and select the most widely used
+laplace [15][16], conviction [17], Piatetsky-Shapiro’s measure
+(PS) [18], lift [19][20] and certainty factor (CF) [21] as
+representatives of such measures.
+Some other interestingness measures studies the null-
+transaction2, which is normal in large databases. All-
+con?dence [22] is emerging as a kind of such measures with
+respect to null-transaction. Another widely-used measure is
+cosine (also called IS measure) [13].
+Another category of measures have been proposed for
+measuring deviation from statistical independence, such as ?2
+value [19] and Pearson’s correlation coef?cient (?-coef?cient)
+[23]. However, since ?2 = ?2/N and it is easier for ?2 value
+to set the signi?cance level, ?2 value is selected to study as
+the representative of such measures.
+III. THE PROPOSED APPROACH
+This subsection describe the proposed approach for se-
+lecting the appropriate interestingness measure for the traf?c
+prediction application.
+A. Time-related classi?cation rules for traf?c prediction
+A novel algorithm called Genetic Network Programming
+with Estimation of Distribution Algorithm (GNP-EDA) based
+classi?cation rule mining has been proposed [8][9][10]. The
+effectiveness and accuracy of the proposed algorithm have
+been proved in a traf?c prediction system. The GNP-EDA
+is used to extract time-related classi?cation rules from the
+traf?c databases. The average traf?c ?ow of each section is
+discretized to Low, Mid or High and saved in the traf?c
+databases. The form of attributes saved in the traf?c database
+can be denoted as Ai(?), where Ai represents the road
+section and ?(? ? {Low,Mid,High}) represents the class
+of the traf?c ?ow. The time-related classi?cation rules can be
+discovered with the following form:
+Ai(?)(t = ta) ? ... ?Aj(?)(t = tb)? Ac(?)(t = tc).
+Here, ta, tb and tc are the time points which satisfy the
+condition: ta ? ... ? tb ? tc. This kind of time-related
+classi?cation rules can represent the relationships between
+different attributes with different time points, which can be
+used to do the classi?cation for traf?c prediction [8][9][10].
+B. Roles of interestingness measures
+In the GNP-EDA based classi?cation rule mining algorithm,
+interestingness measures play important roles, where various
+measures are used for discovering, evaluating and ranking
+rules. In the previous research, support, con?dence and ?2
+value measures are combined for rule extraction. However, we
+rarely know whether such measures are the appropriate ones
+for the traf?c prediction problem. Therefore, various measures
+are necessary to be considered in the algorithm.
+To solve the above problem, we propose an approach for se-
+lecting the appropriate measure in this paper. The ?owchart of
+the appropriate interestingness measure selection approach is
+shown in Fig. 1. In this approach, the interestingness measures
+2Null-transaction denotes the transactions that do not contain any of the
+object itemsets. In Table I, n
+XY
+represents the number of null-transaction.
+- 1970 -
+Start
+End
+Rule Extraction
+Rule Pool
+List of Measures
+Evaluation of Rules
+1 m ||M
+……
+Rank Rules
+Classification
+Comparison of Classification 
+Accuracy
+support, confidence
+Roles of measures
+……
+1 m ||M
+…………
+Fig. 1. Flowchart of proposed approach.
+play important roles. Firstly, support and con?dence are used
+to evaluate the interestingness of candidate classi?cation rules.
+After the rule extraction step, each interestingness measure
+from Table II is selected to evaluate the interestingness of
+extracted rules and rank them. The selected measure also plays
+an important role in the classi?cation step. The measure which
+can provide the highest classi?cation accuracy for unseen
+testing data is the appropriate interestingness measure for the
+traf?c prediction. The details of the procedure are described
+below.
+C. Rule extraction
+An evolutionary algorithm named Genetic Network Pro-
+gramming with Estimation of Distribution Algorithm (GNP-
+EDA) [8][9][10] is applied to ?nd classi?cation rules. The
+detail of the method can be found in the cited papers. In
+the rule extraction step, two famous measures, i. e. , support
+and con?dence are applied to evaluate the candidate rules
+and prune the uninteresting rules. The reason why support
+and con?dence are chosen is that support and con?dence are
+powerful tools to prune the uninteresting rules by calculating
+the statistical probabilities [1][3][14]. The rules satis?ed the
+following conditions are extracted and saved in the rule pool.
+support ? supportmin, (1)
+confidence ? confidencemin, (2)
+where supportmin and confidencemin are the thresholds for
+pruning the uninteresting rules.
+Since GNP-EDA is a kind of evolutionary algorithm, the
+rule extraction is done iteration by iteration until a prede?ned
+?xed number of rules are discovered. Taking the road section
+Ac as an example, there are three corresponding sets of
+rules whose consequent attribute is Ac(Low), Ac(Mid) or
+Ac(High). GNP-EDA extracts a ?xed number (Nf ) of rules
+for each consequent attribute.
+D. Rank rules
+As described above, the classi?cation rules are extracted
+based on the thresholds of support and con?dence. Even if
+the rules can be evaluated by these two measures, there are
+still a large number of rules saved in the rule pool. Therefore,
+adopting the other measures to rank and ?lter the discovered
+rules is quite necessary and essential in our task. In the
+proposed approach, we study the measures list in Table II to
+evaluate the extracted rules and rank them.
+Let M denotes the set of suf?xes of interestingness mea-
+sures, and m ? M. The ranking mechanism of the proposed
+approach is described as follows. When evaluating and ranking
+two rules r1 and r2 by measure m, r1 has higher rank order
+than r2 if and only if:
+• m(r1) > m(r2); or
+• m(r1)=m(r2), but confidence(r1) >confidence(r2);
+or
+• m(r1)=m(r2) and confidence(r1)=confidence(r2), but
+support(r1) >support(r2); or
+• m(r1)=m(r2), confidence(r1)=confidence(r2) and
+support(r1)=support(r2), but r1 is a generalized rule3
+or has fewer attributes in its antecedent part comparing
+with r2.
+Using the above ranking mechanism, all rules saved in the
+rule pool are sorted by each measure, which will be used for
+later classi?cation.
+E. Classi?cation
+For a target road section Ac, there are three corresponding
+sets of rules whose consequent attribute is Ac(Low), Ac(Mid)
+or Ac(High). We denote the three corresponding sets of rules
+as Rc(?), ? ? {Low,Mid,High}. In order to predict the
+traf?c ?ow of the road section Ac of L time points later at
+the current time point CT, which is called L-step prediction,
+the rules whose Prediction Span (PS) is equal or larger than L
+(PS ? L) would be valid for providing the useful prediction
+information for the the road section Ac.
+De?nition 1 (Prediction Span (PS)): The time difference
+between the last attribute of the antecedent part and the
+consequent attribute of a rule is called Prediction Span.
+After all the rules are ranked by a selected measure, a subset
+of the rules with the highest scores of interestingness by the
+selected measure is picked up from the rule pool. Given road
+section Ac whose traf?c is to be predicted, the three sets of
+rules Rc(Low), Rc(Mid) and Rc(High) are selected from
+the rule pool. We select the top ? (coverage threshold) rules
+with the highest scores of interestingness and saved in the
+corresponding subsets R?c(?).
+After obtaining the three sets of rules R?c(?), we use these
+rules to predict the traf?c ?ow by calculating the average
+matching degree with the testing data. Trivially, given a rule
+r ? R?c(?), if the antecedent part of the rules matches the
+testing data, we assign the consequent attribute of rule r to
+3For r1 with the form of X ? Y and r2 with the form of X? ? Y , r1
+is a generalized rule with respect to r2, if and only if X ? X?.
+- 1971 -
+prediction result. Since there are many rules in the subset
+of rules R?c(?), multiple rules are used for classi?cation. To
+decide which label a testing data should have, an average
+matching degree mechanism is adopted in this paper.
+Let m ? M denote the interestingness measure used for
+ranking the rules and m(r) denotes the value of rule r by
+measure m. Num(?) denotes the number of rules in R?c(?).
+R?cm(?) indicates the set of suf?xes of the rules in R?c(?)
+whose antecedent part matches with the testing data. For given
+testing data d, the average matching degree of data d with rules
+in R?c(?) is calculated as follows.
+Match?(d) =
+?
+r?R?cm(?)
+m(r)
+Num(?) , (3)
+The values of Match?(d) of three classes (*) are compared,
+where the class with the highest average matching degree is
+the classi?cation result.
+The classi?cation results are compared with the actual
+testing data for calculating the classi?cation accuracy. Dif-
+ferent selection of the interestingness measures would lead to
+different classi?cation accuracies. After the comparison, the
+appropriate measure for the traf?c prediction application could
+be found.
+IV. SIMULATIONS
+In this section, the interestingness measures shown in Table
+II are studied in the traf?c prediction application. The proposed
+approach is adopted to ?nd the appropriate measure from
+the 10 famous measures in the list for the traf?c prediction
+application.
+The evolutionary algorithm GNP-EDA is carried out to
+mine the classi?cation rules from the traf?c databases. Two
+simulations are carried out based on different settings of Nf 4,
+i.e., 200 and 300.
+The thresholds of support and con?dence in rule extraction
+are de?ned as follows, supportmin = 0.03, confidencemin =
+0.8.
+The structure of the rules is time-related, where there exist
+time differences between different attributes of the rules. 1-
+step prediction (L = 1) is carried out for traf?c prediction.
+The classi?cation accuracy is calculated by checking whether
+the classi?ed results satis?ed the actual results as shown in
+Eq. (4). The classi?cation accuracy is composed of training
+accuracy and testing accuracy, where testing accuracy would
+guide us to ?nd the appropriate measure.
+Accuracy =
+Number of testing examples correctly classi?ed
+Total number of testing examples , (4)
+10 interestingness measures in Table II are used to rank the
+extracted rules and make a comparative study. As a result, the
+appropriate measure for the traf?c prediction application could
+be obtained.
+4For target road section Ac, we mine Nf classi?cation rules for each set of
+Rc(Low), Rc(Mid) or Rc(High) whose consequent attribute is Ac(Low),
+Ac(Mid) or Ac(High).
+A. Simulation results
+We start by analyzing various measures with different
+coverage thresholds (?). The role of the analysis is to rank
+the rules using each selected measure.
+The classi?cation accuracy of the interestingness measures
+with different values of coverage threshold (?) are shown in
+Fig. 2 and 3, which are the average over 10 different trials of
+rule extraction. Moreover, the ranking of testing accuracies of
+the measures listed in Table II is shown in Table III.
+B. Simulation analysis
+Results showed that different measures provide different
+classi?cation accuracies for the same set of rules, and the
+classi?cation accuracies would also be different for different
+coverage thresholds. Summarizing the two simulations with
+different Nf , we could ?nd that Laplace could provide the
+highest classi?cation accuracy in testing data, which means
+that Laplace is the appropriate interestingness measure for
+the traf?c prediction application presented in this paper. Con-
+?dence, conviction, lift and CF provide similar accuracies in
+both training and testing, since conviction, lift and CF are
+the functions of con?dence. On the other hand, we could ?nd
+that ?2 value used in the previous research [8][9][10] is not
+the appropriate measure for the traf?c prediction application
+since it can not obtain the highest accuracy. The rest measures
+provide much worse results because of the misleading ranks.
+On the other hand, an extended analysis is done between
+the training accuracy and testing accuracy. Based on these
+comparison, we could ?nd that the ranking of Laplace in
+the training data is just in the ?fth, but it achieves the best
+performance in the testing data, while some other measures
+such as con?dence, conviction, lift and CF could get the higher
+accuracy than Laplace in the training data, but achieve worse
+accuracy in the testing data. The reason for such a phenomenon
+is that Laplace could extract more general rules using the
+training data, which could provide better performance in the
+testing data. Some other measures pay much more attentions
+to the speci?c rules, which causes the over?tting problem.
+Moreover, the values of interestingness evaluated by mea-
+sures play another important role in our model for the traf?c
+prediction problem. The accuracies by different measures may
+be different in the testing, even if the same rankings of rules
+are achieved in the training. Such phenomenon could be found
+from the comparison among con?dence, conviction, lift and
+CF in Fig. 2(a) and 2(b). The training accuracies of them are
+the same, but the testing accuracies are different.
+Analyzing all measures listed in Table II as a whole,
+we introduce four properties of interestingness measures that
+should be considered in classi?cation rule mining.
+P1 Measure m could help to discover the rules with high
+classi?cation accuracy on the training data.
+P2 The rules evaluated by m should not be too speci?c to
+cause over?tting, which makes the low classi?cation
+accuracy on the testing data.
+- 1972 -
+TABLE III
+RANKING OF TESTING ACCURACIES OF INTERESTINGNESS MEASURES LISTED IN TABLE II. (UNIT: %)
+Measure Support Con?dence Laplace Conviction PS Lift CF All-con?dence Cosine ?2 value
+Nf=200
+Ranking 9 4 1 4 7 3 2 10 8 6
+Accuracy 79.03 87.35 88.22 87.35 80.32 87.51 87.55 78.79 80.21 82.44
+Nf=300
+Ranking 7 2 1 2 8 2 2 10 9 6
+Accuracy 82.46 87.16 88.52 87.16 80.55 87.16 87.16 79.31 80.22 82.54
+ 83
+ 85
+ 87
+ 89
+ 91
+ 93
+ 95
+ 97
+ 99
+ 20  25  30  35  40  45  50  55  60  65  70
+Cl
+as
+sif
+ic
+at
+io
+n 
+A
+cc
+ur
+ac
+y
+Coverage threshold
+The highest accuracy (Confidence, conviction, Lift, CF)
+Laplace
+Support
+PS
+All-confidence
+Cosine
+?2 value
+Confidence, conviction, Lift, CF
+(a) Training accuracy
+ 77
+ 79
+ 81
+ 83
+ 85
+ 87
+ 89
+ 91
+ 93
+ 20  25  30  35  40  45  50  55  60  65  70
+Cl
+as
+sif
+ic
+at
+io
+n 
+A
+cc
+ur
+ac
+y
+Coverage threshold
+The highest accuracy (Laplace)
+Laplace
+Support
+PS
+All-confidence
+Cosine
+?2 value
+Confidence, Conviction
+Lift
+CF
+(b) Testing accuracy
+Fig. 2. The classi?cation accuracies using different interestingness measures with Nf = 200.
+P3 The range of interestingness values evaluated by
+measures is to be limited, such as (0, 1), (-1, 1),
+etc.
+P4 Measures should distinguish the positive and nega-
+tive correlations of X and Y.
+From the simulations we could ?nd that an appropriate
+measure can usually provide a good training accuracy. On the
+other hand, it does not mean that the measure with the highest
+training accuracy can ensure the highest testing accuracy, since
+the over?tting problem may happen. Therefore, P1 and P2
+should be studied based on different applications.
+The reason why P3 is important is that if the range of inter-
+estingness values is limited, the over?tting problem could be
+relatively avoided. Taking ?2 value5 as an example, the range
+of values is in (0, +?). The rules having large interestingness
+values are considered to be more important than some other
+rules with small values, even if they are evaluated above the
+threshold of signi?cance level. Such phenomenon will cause
+the over?tting problem in classi?cation rule mining. For the
+property P4, a good measure should distinguish the positive
+and negative relationships of X and Y, since the ranking of
+rules will be confused, which leads to a bad performance of
+classi?cation.
+The simulations showed that the selection of the appropriate
+5The threshold of ?2 value is set at 3.84 with the 95% signi?cance level,
+or 6.63 with the 99% signi?cance level.
+measure is an essential problem in classi?cation rule mining. It
+should be noticed that the best coverage threshold (?) should
+be studied and the appropriate number of rules should be
+selected to achieve the best classi?cation performance through
+the evaluation by the appropriate measure. In our simulations,
+the highest testing accuracy can be found where laplace is
+selected and ? is set at 30.
+V. CONCLUSIONS
+An interestingness measure selection approach has been
+proposed in this paper. This approach focuses on selecting
+the appropriate measure for classi?cation rule mining, which
+could not be solved by some previous studies. The proposed
+approach is applied to GNP-EDA based classi?cation rule
+mining for solving traf?c prediction problems. A list of 10
+famous measures is studied by the proposed approach. The
+simulation results show that the proposed approach is a pow-
+erful tool. With the selection of the appropriate measure for
+the speci?c traf?c prediction application, it has been found that
+the classi?cation accuracy will be increased. In this paper, we
+found that laplace measure is the most appropriate measure for
+the traf?c prediction. Based on the study, this paper proposed
+four properties of interestingness measures for classi?cation
+rule mining, which are helpful to analyze the interestingness
+measures.
+This work can also be extended to the other applications and
+classi?cation rule mining methods, which is helpful to analyze
+- 1973 -
+ 83
+ 85
+ 87
+ 89
+ 91
+ 93
+ 95
+ 97
+ 99
+ 20  25  30  35  40  45  50  55  60  65  70
+Cl
+as
+sif
+ic
+at
+io
+n 
+A
+cc
+ur
+ac
+y
+Coverage threshold
+The highest accuracy (Confidence, conviction, Lift, CF)
+Laplace
+Support
+PS
+All-confidence
+Cosine
+?2 value
+Confidence, conviction, Lift, CF
+(a) Training accuracy
+ 77
+ 79
+ 81
+ 83
+ 85
+ 87
+ 89
+ 91
+ 93
+ 20  25  30  35  40  45  50  55  60  65  70
+Cl
+as
+sif
+ic
+at
+io
+n 
+A
+cc
+ur
+ac
+y
+Coverage threshold
+The highest accuracy (Laplace)
+Laplace
+Support
+PS
+All-confidence
+Cosine
+?2 value
+Confidence, Conviction, Lift, CF
+(b) Testing accuracy
+Fig. 3. The classi?cation accuracies using different interestingness measures with Nf = 300.
+various measures and select the most appropriate measure,
+leading to the increase of the classi?cation accuracy.
+REFERENCES
+[1] R. Agrawal, T. Imielinski and A. Swami, ”Mining Association Rules
+between Sets of Items in Large Databases”, In Proc. of the ACM SIGMOD
+Int’l Conf. on Management of Data, pp. 207-216, 1993.
+[2] B. Liu, W. Hsu and Y. Ma, ”Integrating Classi?cation and Association
+Rule Mining”, In Proc. of the ACM Int’l Conf. on Knowledge Discovery
+and Data Mining, pp. 80-86, 1998.
+[3] P. Tan, V. Kumar and J. Srivastava, ”Selecting the Right Interestingness
+Measure for Association Patterns”, In Proc. of the ACM Int’l Conf. on
+Knowledge Discovery and Data Mining, pp. 32-41, 2002.
+[4] P. Lenca, P. Meyer, B. Vaillant and S. Lallich, ”On Selecting Inter-
+estingness Measures for Association Rules: User Oriented Description
+and Multiple Criteria Decision Aid”, European Journal of Operational
+Research, No. 184, pp. 610-626, 2008.
+[5] T. Eguchi, K. Hirasawa, J. Hu and N. Ota, ”A Study of Evolutionary
+Multiagent Models Based on Symbiosis”, IEEE Trans. on Systems, Man
+and Cybernetics, Part B, Vol.36, No.1, pp. 179-193, 2006.
+[6] S. Mabu, K. Hirasawa and J. Hu, ”A Graph-Based Evolutionary Algo-
+rithm: Genetic Network Programming (GNP) and Its Extension Using
+Reinforcement Learning”, Evolutionary Computation, MIT Press, Vol.15,
+No.3, pp. 369-398, 2007.
+[7] K. Hirasawa, T. Eguchi, J. Zhou, L. Yu and S. Markon, ”A Double-
+Deck Elevator Group Supervisory Control System Using Genetic Network
+Programming”, IEEE Trans. on Systems, Man and Cybernetics, Part C,
+Vol.38, No.4, pp. 535-550, 2008.
+[8] X. Li, S. Mabu, H. Zhou, K. Shimada and K. Hirasawa, ”Genetic
+Network Programming with Estimation of Distribution Algorithms and its
+Application to Association Rule Mining for Traf?c Prediction”, In Proc.
+of the ICROS-SICE Int’l Conf., pp. 3457-3462, 2009.
+[9] X. Li, S. Mabu, H. Zhou, K. Shimada and K. Hirasawa, ”Genetic
+Network Programming with Estimation of Distribution Algorithms for
+Class Association Rule Mining in Traf?c Prediction”, to appear in
+Proc. of the IEEE Congress on Evolutionary Computation (CEC 2010),
+Barcelona, Spain, 2010.
+[10] X. Li, S. Mabu, H. Zhou, K. Shimada and K. Hirasawa, ”Genetic Net-
+work Programming with Estimation of Distribution Algorithms for Class
+Association Rule Mining in Traf?c Prediction”, to appear in Journal of
+Advanced Computational Intelligence and Intelligent Informatics, Vol. 14,
+No. 6, 2010.
+[11] R. Agrawal and R. Srikant, ”Fast Algorithms for Mining Association
+Rules in Large Databases”, In Proc. of the 20th VLDB Conf., pp. 487-
+499, 1999.
+[12] N. Pasquier, Y. Bastide, R. Taouil and L. Lakhal, ”Discovering frequent
+closed itemsets for association rules”, In Proc. of Int’l Conf. on Database
+Theory, pp. 398-416, 1999.
+[13] P. Tan and V. Kumar, ”Interestingness Measures for Association Patterns:
+A perspective”, In Proc. of KDD 2000 Workshop on Postprocessing in
+Machine Learning and Data Mining, 2000.
+[14] R. J. Bayardo and R. Agrawal, ”Mining the Most Interesting Rules”, In
+Proc. of the ACM Int’l Conf. on Knowledge Discovery and Data Mining,
+pp. 145-154, 1999.
+[15] I. J. Good, ”The Estimation of Probabilities: An Essay on Modern
+Bayesian Methods”, MIT Press, 1965.
+[16] P. Clark and R. Boswell, ”Rule Induction with cn2: Some recent
+improvements”, In Proc. of the European Working Session on Learning,
+pp. 151-163, 1991.
+[17] S. Brin, R. Motwani, J. D. Ullman and S. Tsur, ”Dynamic Itemset
+Counting and Implication Rules for Market Basket Data”, In Proc. of
+ACM SIGMOD Int’l Conf. on Management of Data, pp. 255-264, 1997.
+[18] G. Piatetsky-Shapiro, ”Discovery, Analysis and Presentation of Strong
+Rules”, Knowledge Discovery in Databases, pp. 229-248, MIT Press,
+1991.
+[19] S. Brin, R. Motwani and C. Silverstein, ”Beyond Market Baskets:
+Generalizing Association Rules to Correlations”, In Proc. of the ACM
+SIGMOD Int’l Conf. on Management of Data, pp. 265-276, 1997.
+[20] C. Silverstein, S. Brin and R. Motwani, ”Beyond Market Baskets:
+Generalizing Association Rules to Dependence Rules”, Data Mining and
+Knowledge Discovery, Vol. 2, No. 1, pp. 39-68, 1998.
+[21] E. Shortliffe and B. Buchanan, ”A Model of Inexact Reasoning in
+Medicine”, Mathematical Biosciences, Vol. 23, pp. 351-379, 1975.
+[22] E. Omiecinski, ”Alternative Interest Measures for Mining Associations”,
+IEEE Trans. on Knowledge and Data Engineering, Vol. 15, No. 1, pp.
+57-69, 2003.
+[23] A. Agresti, ”Categorical Data Analysis”, John Wiley & Sons, 1990.
+- 1974 -

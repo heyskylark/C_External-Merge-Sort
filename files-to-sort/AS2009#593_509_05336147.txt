@@ -1,0 +1,696 @@
+Mining Software Change History in an Industrial Environment 
+ 
+Methanias Colaço Júnior, Manoel Mendonça, Francisco Rodrigues 
+Software Engineering Laboratory - UFBA 
+Federal University of Bahia 
+Salvador - BA, Brazil 
+mjrse@hotmail.com, manoel.g.mendonca@gmail.com, frchico@gmail.com 
+ 
+Abstract—Version control systems are among the type of 
+repositories that are frequently explored as sources of software 
+change history. They can be mined to identify associations 
+between software module modifications. This information is 
+useful to support software modification activities, indicating to 
+software engineers which modules are usually modified 
+together during software maintenance or evolution. Previous 
+works published on the subject focused on mining associations 
+from open source software projects. This article presents the 
+use of association mining in an industrial environment. The 
+study was set up as a formal experiment and studied 18 
+systems developed in a large Brazilian beverage company. The 
+results show that the precision of the rules obtained in this 
+environment are even higher than its counterpart obtained in 
+open source projects. This suggests that this approach is very 
+useful in this type of environment.  
+Keywords-closed-source projects; mining software 
+repositories; experimentation; software data warehouse 
+I.  INTRODUCTION 
+Project historic data are the basis to identify useful 
+patterns of software module defect occurrences, associations, 
+modification, evolution and decay. For this reason software 
+engineering research has been exploring software 
+repositories to understand, predict and plan software projects 
+[1]. With these repositories, it is possible, for example, to 
+extract API usage patterns [2], predict software defects [3] 
+and estimate software development effort [4]. 
+Version control systems are among the type of 
+repositories that are frequently explored by software data 
+analysts. They store all modifications done in software 
+modules of given software projects. Due to coupling and 
+dependency, these software modules are usually modified in 
+groups. It is, therefore very useful to identify module 
+associations during software modification and evolution. 
+This information allows programmers to analyze the impact 
+of software modifications and to identify which modules will 
+be possibly affected by a given modification. 
+This work is then focused on the use of historical version 
+control records to estimate the association between software 
+module modifications. These estimations can then be used on 
+demand by programmers who are executing program 
+modification or maintenance. 
+Studies on this subject explore version control systems of 
+open-source software (OSS) projects. There is little evidence 
+on the external validity of the results obtained in these 
+studies to other types of software systems. In this context, 
+there is the need for experimentation of this association 
+discovery approach in other contexts. In particular, it is 
+desirable that the research community explores the usage of 
+association discovery over version control systems 
+containing industrial closed-code projects that use more 
+formal and plan-driven software development processes. 
+This article presents a study that follows an approach 
+similar to what is proposed by Zimmermann et al. and their 
+ROSE Tool [5]. It mines software changes history to 
+characterize software module modification associations for: 
+(1) suggesting further changes to be made in files and finer-
+grained entities; and (2) warnings about missing changes. 
+Unlike previous work, this paper focuses on closed code 
+developed in an industrial environment with a well defined 
+software process. It analyzes the association between 
+software files, executing a coarse granularity analysis. The 
+work is conducted as a formal experiment. The precision and 
+recall of the mined association rules are compared with 
+similar studies done in the OSS domain. The results indicate 
+that the association rules obtained in the closed-software 
+industrial environment are better than those obtained in the 
+OSS domain. 
+This article is organized as follows. Section 2 discusses 
+related work. Section 3 presents the experiment planning and 
+definition. Section 4 describes the experiment execution and 
+the environment used to explore and sanity check the mined 
+association rules. Section 5 describes, analyzes and discusses 
+the validity of the obtained results. And finally, Section 6 
+contains conclusions and final remarks. 
+II. RELATED WORKS 
+As our work focuses on mining software changes, this 
+section discusses studies dealing with mining data from 
+version control repositories. Those studies may diverge on 
+the mining technique employed, amount of analyzed data 
+and algorithms which have been used. 
+Ying presents an approach that mines association rules 
+over CVS version archives [7]. The usefulness of 
+associations is rated by the level of “surprise” associated to 
+it. Associations are considered surprising if they cannot be 
+determined by manual program analysis. The work suggests 
+file change associations, but there is no support for mining-
+on-the-fly. Meaning that there is no support for identifying 
+rules related to a set of files between maintained or evolved 
+on a given time. 
+Researchers have also used CVS history to detect more 
+fine-grained logical coupling between classes, files and 
+2009 XXIII Brazilian Symposium on Software Engineering
+978-0-7695-3844-0/09 $25.00 © 2009 IEEE
+DOI 10.1109/SBES.2009.8
+54
+functions. Zimmerman et al. and Gall et al. mined logical 
+coupling of finer grained software modules, but obtained 
+limited predictive power [8,9]. 
+Dondero also investigated source code and change 
+history mining to identify and predict change coupling [10]. 
+But, he went further and investigated two other approaches: 
+software similarity and software proximity. The first 
+approach considered which files contained similar (or 
+cloned) code, and used it to infer that changes in one file 
+might also imply changes in their similar peers. The second 
+utilized a proximity concept: “two source code files are close 
+if they reference each other, that is, if the code in one file 
+references the code in the other“. Thus, if two files are close, 
+then they might be functionally related. Future enhancements 
+to a shared functionality might then imply changes in both 
+files. 
+Michail mined association rules on the use of 
+programming libraries to detect reuse patterns [11]. The 
+items in these rules are method invocation, inheritance, 
+instantiation, or overriding. 
+Zimmermann et al. built a tool to mine software 
+modification association rules [5]. Their toll, called ROSE, 
+mines associations between files and finer-grained entities. It 
+also supports mining-on-the-fly, by presenting the 
+programmers the rules that apply to the software modules 
+being modified at a given time. The rules are presented in a 
+textual format. They have to be interpreted by the 
+programmers while they use the software. 
+All the work mentioned in this section has two things in 
+common. They all explored open-source software. None of 
+them spent time to build data repository geared towards data 
+analysis. 
+Our work is motivated by the work of Zimmermann et al. 
+Like them, we are concerned with mining software module 
+modification association rules and supporting their use on-
+the-fly. However, our work has a few differences. First, our 
+on-the-fly rule presentation can be visual. We use graphs to 
+facilitate the presentation of module association rules to 
+programmers and managers, see Figures 2 and 3. Second, all 
+data to be mined is first staged in a Data Warehouse. This 
+Data Warehouse is designed to be expandable and flexible 
+and to improve data consistency and analysis performance 
+[6]. Third, our work is focused on closed-source industrial 
+software.  
+III. EXPERIMENT 
+This paper presents our work as an experimental process. 
+It follows the guidelines by Wohlin et al. in [12]. This 
+section will focus on the experiment definition and planning. 
+The following sections will present the experiment execution 
+and data analysis 
+A. Goal definition 
+Our main goal is to evaluate the predictive power of a 
+software change history for projects in an industrial 
+environment, validating and comparing it with the results 
+obtained on studies done over OSS platforms [5]. 
+For this, we will construct a data mining model based on 
+file association rules to predict subsequent necessary changes 
+during navigation in the source code. The goal is formalized 
+using to the GQM Goal template proposed by Basili and 
+presented in [13]: 
+• Analyze our industrial projects 
+• with the purpose of evaluation (against the 
+published OSS projects) 
+• with respect to file modification association 
+effectiveness 
+• from the point of view of the programmers 
+• in the context of software change history 
+B. Planning 
+Context selection: The experiment will target an 
+industrial environment which uses a data warehouse to store 
+software change history and a strict software development 
+process. The environment located at the CIAL. The company 
+produces and distributes Coca-Cola beverages for two 
+provinces in Brazil. Since 2001, the company uses the .NET 
+platform to implement new systems and to convert its old 
+legacy systems. The version control system (VSS 6.0) and 
+the database management system are also Microsoft based. 
+Hypothesis formulation: We are interested in the 
+predictive power characterization of file association rules 
+application in closed-source projects. Thus, we will consider 
+projects developed in an industrial environment, following 
+evaluation setup presented in [5]. We will check for each 
+transaction ? whether its modified files can be predicted 
+from earlier history: 
+• A test case q = (Q, F) will be created, consisting of a 
+query Q ?  files(?) and an expected outcome F = 
+files(?) – Q; 
+• Only the top ten single consequent rules will be 
+considered: R10 ?  R ranked by confidence. The 
+query Aq = apply(Q, R10) is always less or equal 
+than ten; 
+• Aq ? Fq will be the files that matched the expected 
+outcome and will be considered correct; 
+• Aq - Fq will be unexpected recommendations which 
+are wrong. 
+After that, we will use two measures from information 
+retrieval [14]. The first measure is the precision Pq. It 
+describes which fraction of the returned files was actually 
+modified by the user. 
+Achieving high precision is always very important, 
+however, many of the important associations may be left 
+aside even when one has high precision with the found 
+associations. For this reason a second measure is needed, the 
+recall Rq. Recall indicates the percentage of modified files 
+that were returned. In other words, the model may always get 
+it right when suggesting a subsequent change of the program, 
+but leave some important ones behind. The recall measures 
+exactly this. 
+By calculating the harmonic mean between those two 
+metrics, we combine what their measure benefits [20]. The 
+harmonic mean between precision and recall, the F-
+measureq, assures the balance of the model characterization. 
+55
+ qq
+qq
+q
+RP
+RPmeasureF
++
+××
+=?
+2
+    
+F-measureq can be calculated to measure: 
+Navigation through source code. Given a single 
+changed file, can the mining model point programmers to 
+entities that should typically be changed? 
+Error prevention. Can the mining model prevent errors? 
+In other words, the programmer has changed many entities 
+but has missed to change one entity. Does the mining model 
+find the missing one? 
+Closure. The programmer made all necessary changes. 
+How often does the mining model erroneously suggest that a 
+change is missing? 
+This experiment will only analyze the effectiveness to 
+predict Navigation and Error Prevention: 
+• Navigation through source code:  For each 
+transaction ?, and each file f ? files(?), we queried 
+Q = {f}, and checked whether model would predict 
+F = files(?) í {f}. 
+• Error prevention: For each transaction ?, and each 
+file f ? files(?), we queried Q = files(?) í {f}, and 
+checked whether model would predict F = {f}. 
+Hence, the hypotheses we are trying to confirm are: 
+Null hypothesis H0NA: Software change history mining 
+based on files association rules in the context our industrial 
+projects (1) has same Navigation F-measure? reached in 
+open-source projects reported in the literature (2). 
+H0NA: ?1(F- measure?) = ?2(F- measure?) 
+Alternative hypothesis H1NA: Software change history 
+mining based on files association rules in the context of our 
+industrial projects (1) has Navigation F-measure? higher 
+than reached in open-source projects reported in the literature 
+(2). 
+H1NA: ?1(F- measure?) > ?2(F- measure?) 
+Null hypothesis H0EP: Software change history mining 
+based on files association rules in the context of our 
+industrial projects (1) has same Error Prevention F- 
+measure? reached in open-source projects reported in the 
+literature (2). 
+H0EP: ?1(F- measure?) = ?2(F- measure?) 
+Alternative hypothesis H1EP: Software change history 
+mining based on files association rules in the context of our 
+industrial projects has Error prevention F- measure? higher 
+than reached in open-source projects reported in the 
+literature. 
+H1EP: ?1(F- measure?) > ?2(F- measure?) 
+Here it is important to observe that, for our comparison 
+baseline, we will use the association precision and recall 
+measures obtained from the analysis of eight large OSS 
+projects in [5]. 
+Participants and objects selection: The selection of the 
+objects and participants, in our case, projects and its 
+developers, will be done by convenience. We will use some 
+industrial projects which we are currently consultants for. 
+The analysis is non-intrusive to developers as the data is 
+drawn directly from the version control system, they will not 
+know which software change history will be extracted. 
+As shown in Table 1, eighteen systems were selected for 
+the study. All of them use the version control system. The 
+data sets were split in two sets, one for mining and one for 
+evaluation. The evaluation data set included all file 
+modification transactions executed during the last year in the 
+version control system. The mining set included all the 
+transactions entered before that.
+TABLE I.  ANALYZED SYSTEMS (TXN = TRANSACTION) 
+in VSS since #Txn #Txns/Day #Files/Txn Period # Txns
+CadAlmox , Warehouse System Utilities 2001-01-14 13:03 183 0.07 4.16 2007-07-01 to 2008-06-30 12
+Cadastros , Requests System 2001-01-14 13:11 984 0.35 2.26 2007-07-01 to 2008-06-30 108
+Cliente , Customer System 2001-01-14 13:04 3756 1.35 2.82 2007-07-01 to 2008-06-30 227
+Contabil , Accounting System 2001-01-14 13:08 152 0.05 4.75 2007-07-01 to 2008-06-30 4
+Fiscal , Tax System 2001-01-14 13:14 1081 0.39 3.14 2007-07-01 to 2008-06-30 68
+FrameWork , Corporate Framework 2001-01-14 12:23 440 0.16 2.44 2007-07-01 to 2008-06-30 12
+GUF , Cosmetic System 2001-01-14 13:39 969 0.35 4.25 2007-07-01 to 2008-06-30 17
+Legado, Sales System 2001-01-14 12:45 1887 0.68 2.43 2007-07-01 to 2008-06-30 132
+Logistica , Logistics System 2001-01-14 13:11 2072 0.74 3.62 2007-07-01 to 2008-06-30 24
+SECV , Administration System 2001-01-14 12:24 2949 1.06 1.69 2007-07-01 to 2008-06-30 476
+SisAlmox , Warehouse System 2001-01-14 12:44 2424 0.87 2.33 2007-07-01 to 2008-06-30 128
+SisAP , Survey System 2001-01-14 12:44 1792 0.64 2.43 2007-07-01 to 2008-06-30 80
+SisComo , Lending System 2001-01-14 13:07 112 0.04 2.80 2007-07-01 to 2008-06-30 12
+SisCusteio , Budget System 2001-01-14 13:09 1248 0.45 2.76 2007-07-01 to 2008-06-30 131
+SisManutencao , Portal Configuration System 2001-01-14 13:12 1861 0.67 3.02 2007-07-01 to 2008-06-30 68
+SisMkt , Marketing System 2001-01-14 13:12 3124 1.12 3.06 2007-07-01 to 2008-06-30 100
+SisPortal , Web Portal 2001-01-14 16:06 2872 1.03 3.66 2007-07-01 to 2008-06-31 16
+Web Services 2001-01-14 16:46 208 0.07 3.71 2007-07-01 to 2008-06-32 8
+Project, Description
+History (Training) Evaluation
+ 
+ 
+56
+Instrumentation: An ETL (Extraction, Transformation 
+and Loading) program was written to extract the data about 
+the selected systems from the version control systems. The 
+data preprocessing and cleaning approach was similar to the 
+one used in [5]. Like CVS [15], the Microsoft VSS 6.0, 
+provides only file versioning. We ignored all changes that 
+affected more than 30 entities and followed the classical 
+sliding window approach [16]. In it, two subsequent changes 
+?i and ?i+1 by the same author and with the same rationale 
+are part of one transaction ? if they are at most 200 seconds 
+apart. This window size was chosen after the analysis of a 
+sample of typical transactions on the version control systems.
+ 
+The ETL program loaded the data in a custom Data 
+Warehouse (DW). As described in [6], this DW was built for 
+software engineering data analysis and possesses a Data 
+Mart specifically designed for storing historical data on file 
+and other software entities transactions.  
+Mining Model Construction: Considering file changes 
+as a typical transaction, we have used the association rules 
+algorithm implemented in the MICROSOFT Business 
+Intelligence Package. This algorithm belongs to the Apriori 
+association family [17], which is a popular and efficient 
+algorithm for finding correlation between transaction items. 
+The objective was to generate rules to establish correlations 
+between the programs, following the support and confidence 
+levels adopted in [5]. 
+IV. EXPERIMENT OPERATION 
+A. Execution 
+The mining algorithm was applied to all transactions of 
+the chosen training set. It included all but the last year 
+transactions. The last year transactions could then used as the 
+testing data set. 
+After the association model was processed, it was 
+possible to browse the contents of the model. Figure 1 
+displays the qualified association rules, their probabilities or 
+confidences, and their importance scores. The importance 
+score is designed to measure the usefulness of a rule. The 
+higher the importance score, the better the quality of the rule 
+is. 
+Importance is also called the interestingness score or the 
+lift. The importance is calculated using the following 
+formula (2): 
+Importance (A? B) = log (p( B|A) / p(B|not A)) 
+An importance of zero means that there is no association 
+between A and B. A positive importance score means that 
+probability of B goes up when A is true. A negative 
+importance score means that the probability of B goes down 
+when A is true.  
+For example, the first rule presented in Figure 1 could be 
+read as follows: the programmer who changed 
+frmProcesso.cs also changed frmGerenciadorPlugin.cs, with 
+a confidence of 100% and an importance score of 3,191. 
+ 
+ 
+Figure 1.  Association rules 
+57
+ Figure 2.  Dependency network 
+ 
+Figure 3.  Example of strong coupling
+The data mining package used also allows the rules to be 
+visually presented. Figure 2 displays a dependency network 
+in which each node represents a file. Each edge represents a 
+pair wise association rule. 
+58
+Figure 3 displays an example of a zoom over a strong 
+coupling between several forms of the system and its main 
+form. 
+B. Data Validation 
+In order to build more confidence on what was being 
+mined, a sample of the generated rules was validated by the 
+programmers. They used the visual representation of the 
+rules and confirmed the consistency of the main associations 
+presented by the dependency networks. 
+ The number of original transaction records, 
+gathered throughout eight years of operation of the version 
+control system, was 256,804. However, after a careful data 
+analysis, we identified that of the 256,804 original records, 
+153,288 accounted for marks on the files (labels) and 69,592 
+were directory changes. In the end, only 33,924 changes in 
+4.096 files were taken into account. 
+V. RESULTS 
+As seen in tables 2 and 3, our results reached averages 
+higher than the averages presented in Zimmerman et al [5]. 
+These results suggest that association rules obtained in our 
+industrial environment are better than those obtained in the 
+published OSS domains. In addition, low standard deviation 
+shown in Table 5 indicates that the values do not spread too 
+much around the averages. Our next step was to test this 
+evidence using inferential statistics.  
+A. Analysis and interpretation 
+The analysis started by calculating the harmonic mean 
+for the data presented in Zimmerman et al for eight OSS 
+projects [5]. This data is shown in Table 2. They serve as a 
+baseline of comparison for the results we obtained in the 
+industrial environment, shown in Table 3. 
+For the statistical testing, we established an apriority 
+significance level (?) of 0.05. The Kolmogorov-Smirnov 
+Test ensured that the sample was normally distributed. As 
+seen in Table 4, we found p-values of 0.996 and 0.982 for 
+the Navigation and Error Prevention F-measure?, 
+respectively.  As the p-value is the lowest possible 
+significance with which it is possible to reject the null 
+hypothesis, and they are larger than 0.05, we cannot reject 
+the hypothesis that the data is normally distributed. 
+TABLE II.  RESULTS FOR COARSE GRANULARITY IN [9] AND ITS F-
+MEASURE (R=RECALL; P = PRECISION) 
+Support
+Confidence
+Project R? P? F?-measure R? P? F?-measure
+ECLIPSE 0.17 0.26 0.21 0.03 0.48 0.06
+GCC 0.44 0.42 0.43 0.29 0.82 0.43
+GIMP 0.27 0.26 0.26 0.08 0.74 0.14
+JBOSS 0.25 0.37 0.30 0.05 0.44 0.09
+JEDIT 0.25 0.22 0.23 0.01 0.44 0.02
+KOFFICE 0.24 0.26 0.25 0.04 0.61 0.08
+POSTGRES 0.23 0.24 0.23 0.05 0.59 0.09
+PYNTHON 0.24 0.36 0.29 0.03 0.67 0.06
+Average 0.26 0.30 0.28 0.07 0.60 0.12
+Navigation Prevention
+0.1 0.9
+1 3
+ 
+In order to assure that we could use the T-test for 
+independent samples, we had to test the equality of variances 
+for the independent samples. The Levene Test, shown in 
+Tables 6, produced p-values of 0.544 and 0.908, above 0.05, 
+allowing us to accept the equality of variances for the 
+samples. 
+TABLE III.  RESULTS FOR COARSE GRANULARITY IN AN INDUSTRIAL 
+ENVIRONMENT (R = RECALL; P = PRECISION) 
+Support
+Confidence
+Project, Description R? P? F?-measure R? P? F?-measure
+CadAlmox, Warehouse System Utilities 0.83 0.56 0.67 0.41 0.87 0.56
+Cadastros, Requests System 0.79 0.61 0.69 0.30 0.94 0.45
+Cliente, Customer System 0.87 0.73 0.79 0.56 0.98 0.71
+Contabil, Accounting System 0.65 0.53 0.58 0.37 0.85 0.52
+Fiscal, Tax System 0.89 0.62 0.73 0.43 0.93 0.59
+FrameWork, Corporate Framework 0.59 0.71 0.64 0.35 0.97 0.51
+GUF, Cosmetic System 0.73 0.61 0.66 0.51 0.93 0.66
+Legado, Sales System 0.91 0.54 0.68 0.43 0.90 0.58
+Logistica, Logistics System 0.67 0.71 0.69 0.42 0.96 0.58
+SECV, Administration System 0.74 0.51 0.60 0.40 0.87 0.55
+SisAlmox, Warehouse System 0.90 0.48 0.63 0.57 0.86 0.69
+SisAP, Survey System 0.86 0.50 0.63 0.29 0.91 0.44
+SisComo, Lending System 0.57 0.46 0.51 0.39 0.88 0.54
+SisCusteio, Budget System 0.68 0.51 0.58 0.54 0.96 0.69
+SisManutencao, Portal Configuration System 0.67 0.50 0.57 0.55 0.80 0.65
+SisMkt, Marketing System 0.89 0.67 0.76 0.60 0.92 0.73
+SisPortal , Web Portal 0.83 0.68 0.75 0.65 0.92 0.76
+Web Services 0.65 0.56 0.60 0.50 0.87 0.64
+Average 0.76 0.58 0.65 0.46 0.91 0.60
+Navigation Prevention
+1 3
+0.1 0.9
+ 
+Finally, we applied the T-Test and, in both cases, we 
+obtained the p-value of 0.000, significantly lower than 0.05, 
+rejecting our null hypotheses (?1(F-measure?) = ?2(F-
+measure?)). We can, therefore, infer that better effectiveness 
+of file modification prediction was achieved in our industrial 
+projects than in the OSS projects Zimmermann et al [5] 
+analyzed. The threats to validity to this conclusion are 
+analyzed in the next section. 
+TABLE IV.  KOLMOGOROV-SMIRNOV TEST 
+18 18
+.6533 .6028
+7.444E-02 9.380E-02
+.096 .110
+.096 .110
+-.076 -.102
+.409 .466
+.996 .982
+N
+Mean
+Std. Deviation
+Normal Parameters a,b
+Absolute
+Positive
+Negative
+Most Extreme
+Differences
+Kolmogorov-Smirnov Z
+Asymp. Sig. (2-tailed)
+Navigation Prevention
+Test distribution is Normal.a. 
+Calculated from data.b.  
+TABLE V.  GROUP STATISTICS (GROUP 1 = CLOSED-SOURCE; GROUP 
+2 = OPEN SOURCE) 
+18 .6533 7.444E-02 1.755E-02
+8 .2750 6.969E-02 2.464E-02
+18 .6028 9.380E-02 2.211E-02
+8 .1213 .1293 4.573E-02
+Projects
+1
+2
+1
+2
+Navigation
+Prevention
+N Mean
+Std.
+Deviation
+Std. Error
+Mean
+59
+TABLE VI.  LEVENE AND T TESTS FOR NAVIGATION AND PREVENTION  
+ 
+.379 .544 12.182 24 .000 .3783 3.106E-02 .3142 .4424
+12.507 14.376 .000 .3783 3.025E-02 .3136 .4431
+.014 .908 10.751 24 .000 .4815 4.479E-02 .3891 .5740
+9.481 10.421 .000 .4815 5.079E-02 .3690 .5941
+Equal variance
+assumed
+Equal variance
+not assumed
+Equal variance
+assumed
+Equal variance
+not assumed
+Navigation
+Prevention
+F Sig.
+Levene's Test for
+Equality of Variances
+t df
+Sig.
+(2-tailed)
+Mean
+Difference
+Std. Error
+Difference Lower Upper
+95% Confidence
+Interval of the
+Difference
+t-test for Equality of Means
+B. Threats to Validity 
+In spite of having achieved statistical significance in the 
+study, one must consider the following threats to the validity 
+of our study: 
+• We cannot conclude that all closed-source projects 
+will yield similar results as the one we have 
+obtained, process maturity can play a large role on 
+the prediction effectiveness; 
+• Other software characteristics such as size and 
+complexity may affect the association results. We 
+have not test for those variables; 
+• The projects that we analyzed were stable and had a 
+few number of transactions per day (Table 1). Less 
+stable or more dynamic projects may yield different 
+results; 
+• Like in [5], the ordering of changes may influence 
+the results for Navigation and Error Prevention. 
+VI. CONCLUSIONS AND FUTURE WORK 
+This article shows that software module modification 
+association rules derived from our stable industrial 
+environment were more effective than those derived from the 
+OSS projects reported in the literature. As association rules 
+are already being successfully applied for impact analysis in 
+this context [5], our results indicates that they can also be 
+effectively applied in industrial environments such as the one 
+we studied.  
+ We believe that this finding may stimulate further 
+studies in the industry and, hopefully, motivate them to 
+invest on association mining to support software 
+maintenance and evolution activities. 
+ It is important to observe that in our analysis, 
+systems with little evolutive maintenance, such as the 
+Marketing and the Customer Management System, yield 
+rules with precision and recall better than the average. This 
+was expected as more stable systems should yield better 
+association rules. 
+Also, independent of the number of transaction per day, 
+systems with small training sets, such as the Accounting and 
+the Web Services Systems, yield rules with precision and 
+recall worse than the average. This was also expected, as this 
+number training examples helps to strengthen the rules.  
+As mentioned before, we adapted the software 
+engineering experimental process described in Wohlin et al 
+[12] to software repositories mining experiments. We believe 
+that the studies, applications, and tools for software 
+repository mining can benefit from this type of approach. 
+Rigorous experimental description facilitates replication of 
+studies and the executing of systematic reviews and other 
+types of secondary analysis in the field [18]. Considering the 
+number of studies being done in the area, we believe that 
+experimental formalism combined with approaches like 
+standardization of data exchange formats among software 
+repositories [19], can contribute to facilitate the execution 
+and replication of studies in the area. 
+As future work, we will start to look at fine granularity 
+associations, analyzing classes and methods as opposed to 
+files. We will also analyze relationships between coupling 
+and the associations mined from version control systems. 
+We are currently finishing a Microsoft Visual Studio 
+plug-in to use the mined rules to aid programmers on the fly. 
+It will work as a monitor that verifies saved files and warns 
+programmers about unverified associated files. This will 
+facilitate the programmers’ impact analysis effort and 
+mitigate errors during program modification. After its 
+completion, the plug-in will be experimentally evaluated in 
+carefully controlled case studies. Lastly, we will use our 
+Data Warehouse [6] to test several other software mining 
+techniques over the data we have already gathered and pre-
+processed. 
+ACKNOWLEDGMENT 
+This study could only be developed due to the full 
+support of CIAL–Brazil and its staff. This work is partially 
+60
+supported by CNPq – Brazil’s National Research and 
+Development Council. 
+REFERENCES 
+[1] Mendonça, M. G. and Sunderhaft, Nancy L (1999). Mining Software 
+Engineering Data: A Survey. A DACS State-of-the-Art Report 
+Available at: 
+http://www.dacs.dtic.mil/techs/datamining/datamining.pdf. 
+[2] Mithun Acharya, Tao Xie, Jian Pei, and Jun Xu (2007). Mining API 
+Patterns as Partial Orders from Source Code: From Usage Scenarios 
+to Specifications. In Proceedings of the 6th joint meeting of the 
+European Software Engineering Conference and the ACM SIGSOFT 
+Symposium on the Foundations of Software Engineering (ESEC/FSE 
+2007), Dubrovnik, Croatia, pp. 25-34. 
+[3] Zimmermann, T.; Kim, S.; Whitehead ,E. J. and Zeller, A (2007). 
+Predicting Faults from Cached History. In Proc. of the 29th 
+International Conference on Software Engineering (ICSE 2007), 
+pages 489–498. 
+[4] Lucas Layman, Nachiappan Nagappan, Sam Guckenheimer, Jeff 
+Beehler, Andrew Begel (2008). Mining software effort data: 
+preliminary analysis of visual studio team system data. In 
+Proceedings of the International Working Conference on Mining 
+Software Repositories, pages 43-46. 
+[5] Zimmermann, T., Zeller, A., Weissgerber, P., and Diehl, S (2005). 
+Mining Version Histories to Guide Software Changes. IEEE 
+Transactions on Software Engineering, 31, 429-445. 
+[6] Colaço, Methanias, Mendonça, M. G., Rodrigues, Francisco (2009). 
+Data Warehousing in an Industrial Software Development 
+Environment.  Paper submitted to 33th IEEE Software Engineering 
+Workshop. 
+[7] T. T. Ying (2003). Predicting source code changes by mining revision 
+history. Master’s thesis, University of British Columbia, Canada. 
+[8] T. Zimmermann, S. Diehl, and A. Zeller (2003). How history justifies 
+system architecture (or not). In Proc. International Workshop on 
+Principles of Software Evolution, Helsinki, Finland, pages 73–83. 
+[9] H. Gall, M. Jazayeri, and J. Krajewski (2003). CVS release history 
+data for detecting logical couplings. In Proc. International Workshop 
+on Principles of Software Evolution, Helsinki, Finland, pages 13–23. 
+[10] Robert Michael Dondero, Jr (2008). Predicting Software Change 
+Coupling. PhD dissertation, Drexel University, USA. 
+[11] Michail (2000). Data mining library reuse patterns using generalized 
+association rules. In International Conference on Software 
+Engineering, pages 167–176. 
+[12] Wohlin, P. Runeson, M. Host, M. C. Ohlsson, B. Regnell, and A. 
+Wesslén (2000). Experimentation in software engineering: an 
+introduction. Kluwer Academic Publishers, ISBN: 0-7923-8682-5. 
+[13] R. van Solingen and E. Berghout (1999). The Goal/Question/Metric 
+Method: A practical guide for quality improvement of software 
+development. McGraw-Hill. 
+[14] C. J. V. Rijsbergen (1979). Information Retrieval, 2nd edition. 
+Butterworths, London. 
+[15] Zimmermann T. and Weibgerber, P (2004). Preprocessing CVS data 
+for fine-grained analysis. In Proc. International Workshop on Mining 
+Software Repositories (MSR04), Edinburgh. 
+[16] K. Fogel and M. O’Neill (2002). cvs2cl.pl: CVS-log-message-to-
+ChangeLog conversion script. Available at: 
+http://www.redbean.com/cvs2cl/. 
+[17] R. Agrawal and R. Srikant (1994). Fast algorithms for mining 
+association rules. In Proceedings of the 20th Very Large Data Bases 
+Conference (VLDB), pages 487–499. Morgan Kaufmann. 
+[18] T. Dyba, B. Kitchenham, and M. Jorgensen (2005). Evidence-based 
+software engineering for practitioners. Software, IEEE, 22(1):58–65. 
+[19] Sunghun Kim, Thomas Zimmermann, Miryung Kim, Ahmed E. 
+Hassan, Audris Mockus, Tudor Girba, Martin Pinzger, E. James 
+Whitehead Jr., Andreas Zeller (2006). TA-RE: An Exchange 
+Language for Mining Software Repositories. In Proceedings of the 
+Third International Workshop on Mining Software Repositories, 
+Shanghai, China, pp. 22-25. 
+[20] Michael Grossman and Robert Katz (1986). A new approach to 
+means of two positive numbers. International Journal of 
+Mathematical Education in Science and Technology, Volume 17, 
+Number 2, pages 205 – 208. 
+61

@@ -1,0 +1,647 @@
+2010 Second International conference on Computing, Communication and Networking Technologies
+ An Improved Pre-Processing Technique with Image 
+Mining Approach for the Medical Image 
+Classification 
+P. Rajendran,
+Department of CSE,
+K. S. Rangasamy College of 
+Technology, Tiruchengode
+ Email: peerajendran@gmail.com
+M. Madheswaran,
+Center for Advance Research, 
+Department of Electronics and 
+Communication Engineering,
+Muthayammal Engineering College,
+Rasipuram
+K. Naganandhini,
+Final Year CSE,
+K. S. Rangasamy College of 
+Technology, Tiruchengode.
+Email:naganandhini.k@gmail.com
+Abstract -- The proposed system mainly concentrates on the 
+diagnosis of brain tumor from the CT-Scan (Computerized 
+Tomography) brain images. This work gives the neuroradiologist a 
+second option for the easy identification of tumor cells from the 
+brain image. The important data mining concept that has been 
+included in the proposed work consists of pre-processing of the CT-
+Scan brain image. The method used for pre-processing includes 
+Shape priori technique. The feature selection from the brain image 
+has been done using the association rule mining. The rules 
+generated for extracted features are stored in the transactional 
+database have been classified using the data mining concept called 
+Decision Tree Classification. The combination of both the 
+association rule mining and the decision tree classification gives the 
+high degree of accuracy and efficiency for the proposed system. 
+Keywords —Data mining, Image mining, Shape priori algorithm, 
+Association Rule Mining, Decision Tree Classification.
+I. INTRODUCTION
+Medical diagnoses of brain tumor from the brain tissues were 
+very important in medical treatments of brain cancer. There 
+exist many types of techniques for the detection of brain tumor 
+[1] for instance conventional radiology, ultrasonography, 
+magnetic resonance imaging, computerized tomography and etc. 
+Among the various types of screening procedures, computer 
+aided position Emission tomography provides the cost effective, 
+lass radiation and accurate identification of brain tumor.
+The process of diagnosing a number of CT-Scan images after 
+analysis becomes tiresome and more consequently susceptible 
+to errors. Hence a computer aided diagnosis (CAD) system can 
+be used to assists the physician’s as a second option to reduce 
+the mistakes and errors [2]. Thus, in medical centers and in 
+hospitals building CAD system is becoming of high important.
+Pre-processing of images is an essential task in the field of 
+object based motion estimation, medical image processing, 
+computer vision, etc. In order to analyze the object properties, 
+978-1-4244-6589-7/10/$26.00 ©2010 IEEE
+Pre-processing techniques have been used t o isolate the 
+desired object from the image [3] [4]. The medical image pre-
+processing is a challenging problem. Its results are needed for 
+the estimation of boundary of an object, classification of tissue 
+abnormalities, shape analysis, contour detection and texture 
+segmentation. Several diagnoses are based on the proper pre-
+processing of digitized image.
+Feature selection is a classical problem in the field of statistics, 
+and also an important topic in machine learning which is 
+mainly studied from the perspective of statistics and 
+information processing. According to the mode of combining 
+the learning algorithm, the existing feature selection strategies
+[5] can be mainly categorized into three groups: embedded 
+methods filter methods and wrapper methods [6]. In the 
+proposed work, a great effort to apply association rule mining 
+techniques to solve feature selection problems, and attempt to 
+produce a small size feature subtypes that is acceptable for 
+classification tasks.
+Decision tree have been a powerful and attractive tool in the 
+field of classification, mainly because they produce easily 
+interpretable and organized results. In general computationally 
+efficient and capable of dealing with noisy data [7] [8]. In the 
+proposed paper section II gives the system description, section 
+III describes the proposed system, section IV results and 
+discussion and finally section V gives the conclusion and 
+references.
+II. SYSTEM DESCRIPTION
+The proposed system consists of two main phases namely the 
+training phase and the testing phases. The techniques that are 
+conducted on these phases for image mining is pre-processing, 
+feature extraction, association rule mining and decision tree 
+classification. 
+In the proposed work brain images were pre-processed using the 
+pre-processing technique called Shape priori technique. The 
+technique mainly includes the curve evolution and shape 
+correction methods. The curve evolution method produces the 
+features from the images and also the prior knowledge about the 
+images. The shape correction technique includes the image 
+correction and shape correction. The images that is pre-
+Fig. 1 Overview of the proposed system
+Processed using the shape priori techniques has been extracted 
+using the feature extraction method and the features are stored 
+in the transactional database. The popular data mining technique 
+used for calculating the frequent itemset generation is 
+association rule mining (ARM). In the proposed system 
+association rule mining method has been used to mine the rules 
+for the features that are extracted from the pre-processed CT-
+Scan images. Figure 1 gives the overview of proposed system.
+III. PROPOSED SYSTEM
+A.   Pre-processing 
+CT-scan brain images are noisy and inconsistent to interpret in 
+their raw form. To produce a reliable representation of the brain 
+images, pre-processing of the brain images has been needed. 
+There are two techniques involved in the pre-processing of brain 
+images they are,
+Noise Reduction: Many brain images have existing artifacts 
+like written labels that need to be eliminated.
+Enhancement of images: Image enhancement improves the 
+quality of the image. It improves the distinct feature in an 
+image, by increasing the contrast range in the image.
+Shape Priori: In the proposed system the technique that has 
+been used for pre-processing includes the Shape priori 
+technique. The general idea of this method is to evolve a curve 
+in the image in such a way that its final position corresponds 
+to the segmentation of the shape in the algorithm. The curve 
+evolution is driven by two terms; one used the features taken 
+from the image while the other includes a priori knowledge 
+about the shape of the curve which limits the space of possible 
+solution. The flow of proposed segmentation algorithm is 
+shown in the Figure 2. The initial estimation is obtained by 
+roughly fitting the mean shape of the shape space which is 
+represented by a set of equidistant sampled points (control 
+points) into the pre-processed image.  The initial curve is 
+iteratively deformed by two successive steps: image correction 
+and shape correction. The initial estimation is obtained by 
+roughly fitting the mean shape of the shape space [9] which is 
+represented by  a set of equidistant sampled points (control 
+points) into the pre- processed image. The initial curve is 
+iteratively deformed by two successive steps: image correction 
+and shape correction.  The first step is related to the image and 
+in this step, transformation of the curve towards the image data 
+is achieved by allowing strong local deformation. Hence, a 
+band around the initial estimation is formed by coordinate 
+transformation [10] and this process is called as normal 
+mapping.  This band restricts the use of the image information 
+in the interested regions of this process. Then the control 
+points of the current curve are moved along the normal 
+direction by a magnitude that depends on the image in the 
+neighborhood band.  This displacement depends on weighted 
+average of pixel properties along the normal to the current 
+curve.  The weight takes into account the presence of bright 
+regions roughly parallel to current curve. The second step is 
+related to the knowledge about the shape in the algorithm. This 
+prior shape knowledge is essential to interpolate the curve in 
+those regions with insufficient data. The shape correction is 
+obtained by using mean shape and statistics. This is an 
+iterative algorithm and the stopping condition is based on the 
+movement of the curve during evolution process. The stop 
+condition test is performed after both image correction step for 
+each iteration are completed. 
+Ultrasound 
+carotid artery 
+Curve Evolution
+Terminating 
+condition
+Normal Mapping
+Confidence Learning
+Image correction
+Shape correction
+Segmented 
+output
+Training 
+Phase
+Pre-processing Feature 
+Extraction Transaction
+al database
+ARM
+Decision Tree 
+Classification
+Testing 
+Phase
+Pre-processing Feature 
+Extraction ARM
+Diagnosis
+Fig. 2 Flow diagram of Shape Priori algorithm
+                               
+Fig.3. Original CT-Scan brain image
+Fig. 4 Quality enhanced CT image
+Fig.5. ROI based CT image
+The algorithm is terminated only when the mean absolute 
+difference between the control points of the current curve and 
+previous iteration is less than one pixel by control point or 
+when it reaches a fixed number of iterations.
+B. Curve evolution
+Good initialization is needed to avoid local minima and to 
+obtain early convergence. Figure 3 represents the original CT-
+Scan brain image. The right position, orientation and scale of 
+the shape in the algorithm are identified in this step. Initially, 
+the region of interest (ROI) window is applied to eliminate the 
+scanner artifacts such as the date, scale and time and 
+anisotropic diffusion filter is used to eliminate the speckle 
+noise in the interested region. 
+The Following steps have been employed in the curve 
+Evolution. 
+1. ROI 
+2. Image quality enhancement. 
+3. Edge detection.
+Then, Figure 4 represents the high-pass filter with very low 
+cutoff frequency is used to compensate the slow brightness 
+variations in the image. The high pass filter output is binarized 
+using threshold value proportional to the gray level variance in 
+the ROI. Inside the large regions of the binarized image, a seed 
+point is fixed to define the initial position of the curve and is 
+done by finding the first high intensity pixel from top, bottom, 
+left, and right edges of the ROI which is also represented in 
+figure 5. Using this seed point and the mean value of the 
+distances between the centers to first bright region in all the 
+four directions, the contour of the curve is defined and hence 
+the initial estimation of the shape is obtained.
+C. Image correction 
+Normal Mapping
+In order to deform the curve toward the data of the images, it 
+is essential to permit strong local deformations of the curve. A 
+band around the curve is formed to allow for deformations in 
+the normal direction to the curve. This band formation is 
+equivalent to the image information which is used by the 
+experts when manually tracing the curves. It also restricts the 
+use of the image information to the interested region in this 
+process. This band formation process is defined as Normal 
+Mapping (NM), dependent on a curve C and is also termed as 
+coordinate transformation. The idea is to unroll the band 
+around the curve in such a way that the horizontal coordinate 
+(u) is the arc length of the curve and the vertical coordinate (v) 
+is the distance to the curve. A point (x,y) in  the band is fixed 
+in normal mapping space (u,v) with the vertical coordinate v is 
+the distance from that point to the curve. The points in a 
+vertical direction in NM are in the normal direction to the 
+curve C in the image.
+Learning the Confidence of the Image Information along the 
+contour of the shape:
+The regularity of contour [11] is learned by observing the gray 
+level information in the neighborhood along the manually 
+traced curves. For this, the normal mapping is applied to the 
+curves which are marked using manual methods on the set of 
+CT-Scan brain images. Then, the pixel-wise average of this set 
+of images and their vertical gradients is calculated. They are 
+called as mean NM image, and the mean NM gradient image. 
+Using these two values, weight function (1) is calculated.
+      Fsc (u)= KG? * (INM (u,0) + ?INM (u,0))                  (1)
+Where,
+K = normalization factor
+G?  = Gaussian filter
+u = arc length
+INM =mean normal mapping image
+? INM =mean normal mapping gradient image
+This function is used to modulate the confidence in the image 
+information along the contour.
+Image Correction
+In the image correction step, at iteration k, each control point 
+of Ck (curve obtained at kth iteration) is moved along the 
+normal direction by a magnitude that depends on a weighted 
+average of pixel properties in that direction. The weight takes 
+into account the presence of bright regions roughly parallel to 
+Ck.  A band of width 2d around Ck is mapped using the NM 
+transformation and d represents the distance up to which the 
+pixel details are taken for coordinate transformation. This NM 
+transformed image is applied to a Gaussian filter in the 
+horizontal direction and a derivative kernel in the vertical 
+direction. These two operations are equivalent to a Gaussian 
+filter in a direction parallel to the curve, and a derivative filter 
+normal to the curve. The columns in the NM space must be 
+moved up and down in such a way that the central horizontal 
+line intersects the white horizontal regions as much as 
+possible. The idea is that Ck must be attracted by the bright
+regions in the image, which correspond to the discontinuities 
+in the tissue captured by the scanner. 
+This procedure allows important local deformations of in the 
+normal direction. For each control point (xi, yi ) of Ck (that 
+lies on the central horizontal line of the NM) the new 
+“displacement” value vid  is estimated as a weighted mean of 
+each point in that vertical line, points which lie on the region –
+d to d. The weights combine the area of the connected 
+component in which (u,v) lies, the length of the maximal 
+horizontal segment in that connected component and a 
+regularization term. The expression for the displacement is 
+given in (2).
+        
+?
+?
+?
+=
+d
+jVj,
+d
+d-
+Vi,ijsc
+d
+V)dv,A(u)h(u|V|
+)dvA(uV),h(u|V|V)(uF
+V
+d
+f
+?
+                 (2)
+Where,
+? =global parameter calculated during 
+                  learning process.
+Fsc = weighting factor
+|v| = regularization term
+A(ui,v) = area of connected component
+h(ui,v) = Maximal horizontal segment in the   
+                   connected component
+The control points of the current curve are moved by the
+displacement calculated by (2) and hence the image correction 
+is performed.
+D. Shape Correction Step
+Prior knowledge about the shape of the curve is included in the 
+shape correction step and is essential to interpolate the curve 
+in those regions with insufficient data. This step moves the 
+current curve along the geodesic path towards the mean shape 
+in the shape space. The shape space [10] is formulated by 
+applying the manual segmentation to several CT-Scan brain 
+images. In this method, shape is considered as a point in a 
+given manifold and the distance between shapes is the length 
+of geodesic path between corresponding points in the given 
+manifold. Shape prior is the mean shape learned as Karcher 
+mean of subset of manually marked data base.  Karcher mean 
+minimizes the sum of squared geodesic distances between the 
+mean shapes to each of the shape in the shape space. Shape 
+correction is done by mean shape and statistics. Using mean 
+shape, shape correction is done by finding the shape 
+representation of the current curve and estimating the geodesic 
+path between the mean shape and the current curve. 
+Then the correct scale, orientation and position for the new 
+curve are fixed by registering the image shape with the control 
+points of the current curve. The terminating condition test is 
+performed after the image correction and shape correction 
+step. The algorithm is terminated only when either of the 
+following conditions is satisfied: 1) the mean absolute 
+difference between the control points of the current curve and 
+previous iteration is less than one pixel by control point 2) 
+when it reaches a fixed number of iterations.
+D. Feature Selection Using Association Rule Mining
+Association analysis is used for discovering the relationship of 
+features in large size transactional database. In the proposed 
+method a new feature selection method has been used and it 
+integrates the theory of association analysis in image mining. 
+The general idea of the feature selection method is to find the 
+features that are closely correlative with the keywords that 
+represent the class attribute by mining association rules with 
+its consequence as class attribute in the training data set.
+The algorithm mainly includes three phases: generating 
+association rules set, constructing feature set, and testing 
+feature set. In the first stage, Apriori algorithm [12] [13] has 
+been used to generate all association rules whose consequence 
+is class attribute and lift is greater than 1. While applying 
+Apriori, the parameter support and confidence are determined 
+by the physicians. The second stage is to pick rules circularly 
+from the rules set by certain strategy, as well as adding the 
+attribute that appears in the antecedent of the picked rule into 
+the feature set. The final feature set will be the result of feature 
+selection. The last stage is a testing procedure in which all 
+selected features are evaluated by learning algorithms 
+[14][15]. The proposed feature selection algorithm has been 
+detailed as follows,
+Procedure of feature selection based on association rules:
+1) Discretize the numerical attributes in the training set 
+T;
+2) Generate an association-rule set D by employing 
+Apriori algorithm to the training set T.
+3) Clean up the feature set G;
+4) Select all the rules with consequences as the class 
+attribute from the rule set D, then construct a new 
+rule set Dclass using these rules;
+5) Calculate lift of each rule in Dclass, and then obtain a 
+new rule set D’class  by deleting the rules whose lifts 
+are less than 1.0;
+6) Sort D’class on their length in ascending order first, 
+then on their confidence in descending order, and last 
+on the support in descending order;
+7) Check the loop termination condition: if satisfied, 
+output the feature subset and exit. Otherwise, execute 
+the procedure: pop the first rule d out of Dclass and 
+then add all attribute that appear in the antecedent of 
+d to G;
+8) Remove the instance covered by d from T;
+9) Recalculate the confidence and support of the left 
+rules according to the processed training set T;
+10) Sort D’class on the confidence in descending order 
+first, then on the support in descending order. Jump to 
+step 6.
+Algorithm for the feature selection algorithm based on 
+association rules and its main related procedures has been 
+given below. The function apriori (line 3) is to apply standard 
+Apriori algorithm we mention above to generate the 
+association rules. To ensure the success of rules generation, a 
+procedure discretize (line 2) is needed to perform the act of 
+making numerical attributes discrete before executing Apriori. 
+The procedure sort1 (line 9) and sort2 (line 18) are two 
+multiple key sorting, the former is to sort rules on length in 
+ascending order first, then on confidence in descending order, 
+and last on support in descending order; the latter is to sort 
+rules on confidence in descending order first, then on support 
+in descending order. The function pop (line 13) performs the 
+act that getting the top rule out of the rule set. Procedure 
+extract features in antecedent (line 14) executes returning a 
+feature set that includes all attributes that appear in the 
+antecedent of the rule in parameter list. Function filer train set 
+(line 16) performs simple deletion work that canceling all 
+instances covered by the transferred rule, and return the 
+deleted instances set to main program. Procedure reset (line 
+17) is a key step that correcting the support and confidence of 
+the remainder rules in rule set by recalculating them according 
+to the new training set after executing procedure filer train set.
+Algorithm: feature selection based on association rules
+Input:
+T, training set;
+minsup, minimum support threshold;
+minconf, minimum confidence threshold;
+C, class attribute;
+Cyclenum,, cycle number threshold.
+Output:
+Result, feature subset.
+Method:
+1. result= ? ;
+2. discretize(T);
+3. D=apriori(T, minsup, minconf);
+4. For each rule d ?  D do
+5. If  lift(d)<1 ?  consequence(d)!= C then 
+6. delete d from T;
+7. End If
+8. End For
+9. sort1(D);
+10. For (int i=1;i<=cyclenum; i++) do
+11. if D== ? then break
+12. else
+13. d=pop (D);
+14. G= extract _feature_in_antecedent(d);
+15. result = U G;
+16. Tdelete = filter_train_set(d,T);
+17. reset(Tdelete, D);
+18. sort2(D);
+19. End Else
+20. End If
+21. End For
+22. output result;
+procedure reset(Tdelete,D)
+23. N=NumOfTrainData;
+24. For each instance s?Tdelete do
+25. N=N-1;
+26. For each rule d.(A ? B) do
+27. If d covers s then
+28. ? (A ?  B)= ? (A ? B) -1;
+29. ? (A)= ? (A) -1;
+30. Else If A ?  s then ? (A)= ? (A) -1;
+31. End If
+32. End If
+33. sup(d)= ? (A)/N;
+34. conf(d)= ? (d)/ ? (A);
+35. End For
+36. End For
+E. Classification based on Decision Tree 
+Decision trees have been used for classification and 
+categorization. This tree is similar to a flow chart structure 
+where an internal node represents a test on the attribute, and 
+every branch represents an outcome of the test. The leaf node 
+represents the ultimate class distribution.
+Problem definition
+Given a set of pre-processed CT-Scan images (1,...n), where, n 
+is the maximum number of image, the main significance are:
+(i) To correctly classify the CT-Scan pre-processed 
+images into distinct classes such as normal, 
+benign, and malignant.
+(ii) To increase the accuracy of classification and 
+compare it with the already existing algorithm.
+Construction of Decision Tree
+Step 1: Data for the training set has been obtained by random 
+sampling procedure, with bootstrap, where two-third of the 
+data has been used for creating the tree.
+Step 2: A random number of attribute are selected from the 
+above feature set, and then identify the ones with most 
+information gain to comprise each node.
+Step 3: continue to work down the tree until no more nodes 
+can be created due to information loss.
+Step 4: Identify the error estimate by running the remaining 
+one-third of dataset through the tree and compute the 
+correctness.
+Algorithm:
+Decision tree classifier
+Decision classifier consists of a collection of individual tree 
+classifier. The general concept has been given below,
+1. Select N the number of trees to grow, and m a 
+number no larger then the number of variables.
+2. for i=1 to N
+Call Train set();
+3. Draw a bootstrap sample from the data, term those        
+not in the bootstrap sample as out-of-bag data.
+4. Grow a random tree, where at each node the best set 
+is chosen among m randomly selected variables. The 
+tree is grown to a maximum size and it should not be 
+pruned.
+5. Use the tree to predict out-of-bag data.
+6. In the end use the predictions on out-of-bag data to 
+form majority votes.
+7. Prediction of test data is done by majority votes from 
+predictions from the ensemble of trees.
+By applying the concept of decision tree classifier a three class 
+classifier to classify the transactional database objects as 
+normal, benign and malignant.  
+IV. RESULTS AND DISCUSSION
+A. Classification
+Figure 7. Represents segmented output image of shape prior 
+technique created image which is segmented from binary     
+output image (figure 6) then Classification involves 
+segregating the data into segments which are non-overlapping. 
+Any approach to classification assumes some knowledge about 
+the data termed as training. Performance of classification 
+assignment has been measured in terms of classification 
+accuracy. The outcome of classification can be described as,
+• True positive (TP): A row ti predicted to be in class 
+Cj, and is actually in it.
+• False positive (FP): A row ti predicted to be in class 
+Cj, but is actually not in it.
+• True negative (TN): A row ti not predicted to be in 
+class Cj, but is actually not in it.
+• False negative (FN): A row ti not predicted to be in 
+class Cj , but is actually in it.
+• The precision and recall are used to determine the 
+accuracy of the classifier.
+Fig. 6. Binary output image
+Fig.7. Segmented output image  
+   
+FPTP
+TPPrecision 
++
+=          (3)             
+     
+FNTP
+TPRecall
++
+=          (4)
+B. Confusion Matrix
+The accuracy of the classification technique has been indicated 
+using the confusion matrix. When the system contains s 
+number of matrix, the confusion matrix is in the form of sxs 
+matrix. If there exists any entry for example Cj means it 
+represents the number of rows assigned to a class Cj instead of 
+the classification Ci. The general form of the confusion matrix 
+is given in the following table I. The proposed system consists 
+of three classes for classification like Normal, Benign and 
+Malignant. The confusion matrix that represents the 
+association rule 3 under the decision tree classification is a 3x3 
+matrix. This association rule consists of 200 rules for instances 
+means then 151 are normal, 27 are malignant and 22 are 
+benign.
+TABLE I
+GENERAL TWO CLASS CONFUSION MATRIX
+Human provisionCategory
+Yes No
+Yes TP FPClassifier 
+provision No FN TN
+TABLE II
+CONFUSION MATRIX FOR DECISION TREE CLASSIFIER USING 3X3 
+MATRIX
+Confusion 
+matrix N B M
+N 151(C11) 000(C12) 000(C13)
+B 007(C21) 020(C22) 000(C23)
+M 007(C31) 015(C32) 015(C33)
+The following table II gives the number of correctly classified 
+decisions using confusion matrix.
+C. Precision and Recall
+An important truth to be notices is that both the association 
+rule mining and the decision tree classifier performs relatively 
+well on the transactional database. Using the equation (3) and 
+(4) precision and recall values are computed for the data stored 
+in the database. The following graph gives the precision and 
+recall value for the proposed system compared with the neural 
+network and associative classifier. Figure 8 represents the 
+precision and recall graph.
+D. Classifier efficiency
+Using the TP, TN, FP, FN values the classifier efficiency can 
+be determined in the form of accuracy, specificity and 
+sensitivity. The classifier efficiency compared with the other 
+type of classifier has been given in the following table III.
+Fig. 8 Precision and Recall graph
+TABLE III
+COMPARATIVE PERFORMACE OF ALGORITHMS
+Measure Proposed  Method 
+Association
+Rule NN
+Accuracy % 90 87 83
+Sensitivity % 97 96 88
+Specificity % 96 92 85
+Accuracy= (TP + TN)/(TP+TN+FP+FN);Sensitivity = TP/(TP +FN); 
+Specificity = TN/(TN+FP);
+V. CONCLUSION
+In the proposed system CT-Scan brain images has been proven 
+to be a significant way to detect the brain tumor. The new 
+technique called Shape priori algorithm for pre-processing of 
+images has given the efficient features to be stored in the 
+transactional database. The feature selection using Association 
+rule mining algorithm has given the best way of identifying 
+the rule to be used for classification phase. Decision tree 
+classifier classifies the rules according to the class labels and it 
+assists the physicians for taking the better decision.
+REFERENCES
+[1] Baki Koyuncu and Alper Pasha, “Generating contours of brain tumor 
+images by using their optical density information and image correlation 
+techniques”, Journal of X-ray Science and Technology 15(2007) 1-7.
+[2] Serhat Ozekes ,A.Yilmez Camurcu , “Computer aided       detection of 
+Mammographic masses on CAD digital Mammograms” stanbul Ticaret 
+Üniversitesi Fen Bilimleri  2005/2  pp.87-97
+[3] Haris. K and Efstratiadis.S.N, “Hybrid image segmentation using 
+Watersheds and fast region merging,” IEEE Trans.on Image Processing,
+vol.7, No.12, Dec 1998, pp.1684 - 1699. 
+[4] Gonzalez.R.C and Woods. R.E, Digital image processing (Pearson 
+Education, Singapore, 2002). 
+[5] Zexuan Zhu, Yew-Soon Ong, Manoranjan Dash, “ Wrapper-filter feature 
+selection algorithm using a memtic framework”, IEEE transactions on 
+System, Man, and Cybernetics Part B, Cybernetics : a publication of the 
+IEEE systems, man and cybernetics society 2007: 37(1)
+[6] L. Yu, H. Liu, “ Efficiently handling feature redundancy in high-
+dimensional data”, in. proceedings of the Ninth ACM SIGKDD 
+International Conference on Knowledge Discovery and Data Mining 
+(KDD-03), Washington, DC, August, 2003, pp. 685-690
+[7] J.R. Cano, F. Herrera and M. Lozano, “Evolutionary stratified training 
+set selection for extracting classification rules with trade off precision-
+interpretability”, Data and Knowlegde Engineering, Vol. 60, No. 1, 
+pp.90-108, 2007.
+[8] X. B. Li, J. Sweigart, J. Teng, J.Donohue and L. Thombs, “A Dynamic 
+programming based pruning method for decision trees” , INFORMS. J. 
+computing, Vol.13, pp. 332-344, 2001
+[9] E. Klassen, A. Srivastava, W. Mio, and S. Joshi, “Analysis of planar 
+shapes using geodesic paths on shape spaces,” IEEE Trans. Pattern 
+Anal. Mach. Intell., vol. 26, no. 3, Mar. 2003, pp. 372–383.
+[10] P. Cancela, F. Reyes, P. Rodríguez, G. Randall, and A. Fernández, 
+“Automatic object detection using shape information in ultrasound 
+images,” in Proc. 3rd Int. Conf. Image Process., 2003, pp. 417–420.
+[11] W.O. Herring, D.C.Miller, J.K. Bertrand and L.L. Benyshek, “ Evalution 
+of Machine, Technician and interpreter effects on ultrasonic measures of 
+back-fat and longissimus muscle area in beef Cattle”, J.Animal Sci., Vol-
+72, No. 9,1994, pp. 2216-2226.
+[12] Agrawal R, Srikant R. Fast Algorithms for Mining Association Rules.    
+VLDB. Sep 12-15 1994, Chile, pp.487-499.
+[13] C.M. Kuok, A. Fu, M.H. Wong. Mining Fuzzy Association Rules in
+Databases. ACM SIGMOD Record, Volume 27, Number 1, March        
+1998, pp.41-46.
+[14] Pang-Ning Tan, Michael Steinbach, Vipin Kumar,“Introduction to          
+data mining” Addison Wesley Longman, 2006.
+[15] Jiawei Han, Micheline Kamber. Data Mining: Concepts and Techniques, 
+Second Edition. Morgan Kaufmann, 2006.

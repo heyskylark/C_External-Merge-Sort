@@ -1,0 +1,591 @@
+978-1-4244-8003-6/10/$26.00 ©2010 IEEE 
+ 
+Sequential Pattern Finding: A Survey 
+Naseer Ahmed Sajid, Salman Zafar, Sohail Asghar 
+Department of Computer Science 
+Mohammad Ali Jinnah University 
+Islamabad, Pakistan 
+nasajid2005@gmail.com, salmanzafar3@gmail.com, 
+sohail.asghar@jinnah.edu.pk  
+ 
+ 
+Abstract— To gain the competitive advantage in today’s age of 
+technology, growing data and to bear the competitive pressure, 
+making strong decisions according to customer’s need and 
+market trend has become very important. With huge amount of 
+data on internet, web data mining has become very significant. 
+Web Usage helps companies to produce productive information 
+pertaining to the future of their business function ability by 
+analyzing the usage information from their websites. Sequential 
+Patterns allow the collection of web access data for web pages. 
+This usage data provides the paths leading to accessed web pages 
+and their sequences which can give us valuable information about 
+user’s behavior and effectiveness of websites. The focus of this 
+survey paper is to review the challenges, issues and techniques for 
+finding sequential patterns in the context of web usage mining. 
+For this, different techniques from the literature have been 
+reviewed.  Analysis of the existing techniques related to the 
+sequential pattern finding has been done on the basis of the 
+existing literature and some parameters are proposed. The 
+comparison criteria for the analysis include Graph Structure, 
+Input Data Structure, Input Parameters, Pattern Type, 
+Application, Technique, Method, Algorithm, Scalability and Tool 
+Support. The reviewed techniques are divided into three groups 
+Clustering; Association; Markov Model based techniques. By 
+analyzing all the techniques with the help of above defined 
+parameters, compare and contrast we finally conclude that the 
+two clustering techniques based on Markov Models (Line 
+Prediction and Path Analysis Using Markov Chains & Using 
+Markov Chains for Structural Link Prediction for Adaptive Web 
+Sites) proposed by Sarukkai  & Zhu et al. respectively, are the 
+best sequential pattern finding techniques. Analyzing different 
+techniques also show that the hybrids of different techniques can 
+be used to find sequential patterns in web usage mining data. 
+Strength and weaknesses of one technique can complement of the 
+other technique so it is best to use techniques in combination if 
+we want accurate patterns efficiently.  
+Keywords- Sequential patterns; Clustering; Association 
+Rules; Markov Model; Web Usage Mining    
+I.  INTRODUCTION  
+Internet has become perhaps the biggest searching tool in 
+today’s age now. People want to enhance their businesses 
+electronically. However, E-businesses may not just build a web 
+site and then sit back and pick the benefits, which, in most 
+cases, is unrewarding. People have to implement web mining 
+systems to understand their customers' profiles and identify 
+strengths and weaknesses of their E-marketing efforts on the 
+web through continuous improvements [25]. Internet is a gold 
+mine, but only for those companies who realize the importance 
+of Web mining and adopt a Web mining strategy now [25]. 
+Web Mining is the integration of information collected from 
+the traditional data mining methodologies with information 
+collected over the World Wide Web (WWW). It is used to 
+understand the user’s behavior and evaluate the effectiveness of 
+the web sites. Useful hidden information can be used to 
+discover the visitor’s profile and can also measure online 
+marketing efforts.  
+Web mining can be divided into three categories; Web 
+Content Mining (WCM), Web Structure Mining (WSM) and 
+Web Usage Mining (WUM). WCM is used to discover useful 
+information from text, graph, audio or video data in the web. 
+WSM describes the organization of data from web structures, 
+XML or HTML tags. There are two types of WSM, one is 
+intra-structure (hyperlinks with in page) and other is inter-
+structure (hyperlinks from one page to other page). WUM is 
+the process of finding user’s intention and data from the web 
+logs, for example; IP Address, time and date. It helps to find 
+the search patterns for a particular user’s group [18]. Web 
+Usage Mining (WUM) techniques provide knowledge about 
+the behavior of the users in order to extract relationships in the 
+recorded date. So focus of this paper is on WUM. It is used to 
+find the access patterns from the web. It exposes the usage 
+pattern with cluster mining, association rules mining and 
+sequential pattern mining. According to Jain & Dubes [22], 
+clustering is an unsupervised technique; by using it we can 
+group a given collection of objects into meaningful clusters. 
+     According to Mobasher et al. [23], association rule mining 
+identifies the associations among the dataset, so a subset of 
+transactions implies that presence of other also. These 
+techniques are more frequently used for web usage mining 
+[19]. Martha Koutri et al. define the web usage mining process 
+as given in Figure: 1 [19]. 
+ Figure 1: Web Usage Mining Process [19]
+Raw Usage 
+Data Preprocessing
+Preprocess
+ed Usage 
+Data
+Pattern 
+Discovery
+Usage 
+Patterns
+Pattern 
+Analysis
+Interesting 
+Patterns, 
+Rules, 
+Statistics  
+In this paper, our focus is only on the sequential pattern 
+mining techniques. Agrawal et al. [21], define a problem of 
+finding inter-transaction patterns. Under this context, a pattern 
+is an ordered list of sets of items. In sequential pattern, we 
+identify frequently occurring event sequences (temporal 
+patterns) in the data. This technique is very useful for the 
+identification of navigational patterns. We can discover 
+sequential patterns by using two methods, by using 
+deterministic techniques (recording the navigational behavior 
+of the user) and stochastic methods (use the sequence of web 
+pages that have been visited in order to predict subsequent 
+visits) [20]. We have considered two data sources, web logs 
+and databases. Data is automatically generated and stored in 
+server access logs, referrer logs, agent logs and client side 
+cookies. We are not considering the preprocessing step; we 
+assume that it has done already. 
+This paper extracts absolute information as stated by the 
+authors of proposed approach and then we analyze it on our 
+extracted parameters. In Section II we explain the main points 
+of all the surveyed techniques individually. In Section III 
+assessment criteria for the analysis of techniques has been 
+defined, in section IV the surveyed techniques are discussed 
+and their analysis has been done based on the identified 
+parameters, and in section V, the survey is concluded. An 
+analysis matrix based on our analysis has been given in Table: 
+I.   
+II. SURVEYED TECHNIQUES 
+Sequential Pattern techniques can be deterministic 
+techniques which record the navigational behavior of the user, 
+and stochastic techniques that use the sequence of Web pages 
+that have been visited in order to predict subsequent visits. 
+Markov models are the widely adopted models for sequential 
+pattern discovery for link prediction due to their suitability to 
+modeling sequential processes. Different variations of Apriori-
+like algorithms have also been adopted in most of the 
+techniques related to the mining of sequential patterns for 
+WWW. Our survey contains the following techniques: 
+Chen et al. [1] introduced the concept of “maximal forward 
+references”. The Maximal Forward (MF) references algorithm 
+aims at converting the original sequence of Web server logs 
+into a set of traversal patterns based on statistically dominant 
+paths and association rules. MF references can be defined as 
+the sequence of documents requested by a user up to the last 
+one before backtracking. The approach proposed works in two 
+steps. The first one is the MF algorithm. In the second step they 
+proposed two more algorithms. One determines the large 
+reference sequences using hashing and pruning techniques and 
+the other further improves it in terms of the database scans.  
+The selective scan option is the strength of their technique [1].   
+Pei et al. [2] introduced the WAP-mine algorithm in which 
+mining is performed in a Web access sequence database to 
+depict access patterns. The length of web log pieces can be 
+very long in web mining and it can be in a huge number.  They 
+use a conditional search strategy and a proposed WAP-tree 
+structure. The WAP-tree stores complex and critical 
+information for web access pattern mining. It stores all count 
+information for pattern mining and thus makes mining process 
+free from counting candidates by pattern matching. The search 
+strategy WAP-mine is proposed to mine non-redundant web 
+access patterns. The WAP-mine algorithm is faster than the 
+conventional Apriori based techniques of web access patterns 
+mining. The WAP-mine and GSP algorithm [14] are compared 
+and it is seen that Web-mine surpass GSP in term of scalability.  
+Mortazaviasl et al. [3] introduced the idea of progressively 
+partitioning the database of user sequences into smaller sub-
+databases for mining sequential patterns. They introduced a 
+new projection-based algorithm for mining sequential patterns 
+called the PrefixSpan.  It uses the frequent sequence trellis to 
+partition the database. It traverses the frequent item lattice 
+level-by-level in depth-first order. PrefixSpan exhibit a greater 
+selectivity while in the FreeSpan it is not guaranteed that a 
+projected database would shrink in size or not. Because of 
+changing business needs some sequential patterns become 
+invalid and some needs to be updated which are not solved 
+with Prefix Span.  
+Inokuchi et al. [4] introduced a standard for revealing 
+patterns that frequently appear in structured data. The proposed 
+algorithm extends Apriori algorithm and uses a graph structure 
+which allows the ability to reveal patterns from graph 
+structured data. Furthermore, it has the ability to find frequent 
+sub graphs from both directed and undirected graph structured 
+data having with labeled or unlabeled nodes and links.  
+According to the authors, this approach may be applied for the 
+analysis of user browsing behavior. The generalization of the 
+adjacency matrix representation and the extension to the other 
+class of sub graphs and mining criteria are the open issues in 
+this technique. 
+Conventional mining works on minimum support based 
+approaches for specifying patterns of interest which is very 
+restrictive. Garofalakis et al. [5] presented a different approach 
+in which the SPIRIT family of algorithms has been developed 
+for mining frequent sequential patterns. These algorithms shore 
+up the user-specified constraints for the resulting patterns and 
+the user-specified value for the support threshold. The 
+constraints are given with a flexible constraint specification 
+language with regular expressions. This helps the miners to get 
+more focused and accurate results according to their needs. The 
+degree to which the RE constraints can be enforced to prune 
+the search space of patterns during computation is the 
+distinguishing factor of this approach [5].  
+Another user-specified time constraints approach has been 
+proposed by Masseglia et al. [6]. In this approach specification 
+of minimum and maximum time gaps among web log entries 
+are required by the user. The processing of user access data is 
+performed by using the GENERAL algorithm, a variation of 
+the GSP algorithm [13] for finding generalized sequential 
+patterns. WebTool is the tool proposed by the authors for 
+applying data mining techniques like association rules or 
+sequential patterns on web access logs. Markov modeling for 
+Web data was introduced in 1995 by Bestavros et al. [16]. They 
+employ a first-order hidden Markov model in order to predict 
+the successive link that a user might follow within a certain 
+period of time.  
+Sarukkai [7] uses Markov chains to model sequences of 
+Web pages. Markov chain can be constructed using training 
+data and then further refined from client/server histories. They 
+are used to determine next page, based on current one.  A 
+probability distribution over “preceding” links in the user's 
+browsing history is utilized in order to assign weights to 
+“preceding” links, and thus create the “best” predictors of the 
+subsequent links. The technique is not best suited for smaller 
+applications. No comparison to other technique is given and 
+processing time and bandwidth is not considered. The approach 
+is statistical by nature and Markov Chain matrix becomes very 
+large. 
+A similar approach to Sarukkai is applied by Zhu et al. [8], 
+in which the referrer information from the log file, the page that 
+the user has followed in order to arrive at the requested page 
+has also been utilized. An algorithm for transition probability 
+matrix compression is used to cluster Web pages with similar 
+transition behaviors. The algorithm compresses the transition 
+matrix to a best possible size for efficient probability 
+calculation in link prediction. MF approach is then applied to 
+improve efficiency of link prediction. The link prediction is 
+checked in the system ONE (Online Navigation Explorer). 
+“The link prediction can be further improved by identifying 
+users’ goal in each visit”[8]. If compared with the approach of 
+Sarukkai [8] this approach can predict more steps in the future. 
+Different Markov models are used for different clusters in 
+order to characterize and visualize the navigational behavior of 
+various types of user. Anderson et al. [9] use a mixture of a 
+first-order Markov models to describe the browsing behavior of 
+Web users and predict subsequent requests. The paper focuses 
+on the wireless web navigation. An algorithm MINPATH is 
+proposed which automatically improves wireless web 
+navigation. It suggests useful shortcut links in real time by 
+using a learned model of web visitor behavior to estimate the 
+savings of shortcut links. It suggests best links. A mixture of 
+predictive models like Naive Bayes models and mixtures of 
+Markov models are used. MINPATH finds useful shortcuts 
+when used with these models and thus save extensive 
+navigational effort. The scalability of MINPATH is to be 
+checked on the larger fielded websites.  
+Spiliopoulou et al. [10] used their Web Utilization Miner 
+(WUM) tool for sequential pattern discovery.  “Given a 
+number of traversed paths, discover sub paths with structural 
+and statistical properties of interest” [10], is the main theme 
+addressed in this approach. The MINT Processor module of 
+WUM extracts sequence rules from the pre-processed Web log 
+data. Human experts can define constraints and the MINT 
+processor provides interactive mining. The aggregate data is 
+used for the mining purpose which considerable reduces the 
+size of the dataset under processing. The MINT mining 
+language is used for the interaction, which facilitates pattern 
+specification in an SQL-like format. This language helps in 
+specifying the content, the structure and the statistics of 
+navigation patterns. The semi-automated discovery process is 
+supported by WUM can be a disadvantage when required to 
+use in fully automated web personalization system. The WUM 
+is appropriate not only for the websites but also for any kind of 
+patterns discovery [10].  
+Paliouras et al. [11] proposed a method for discovering 
+navigational patterns using clustering. User sessions are 
+represented by the transitions between pages which are 
+performed during the session. User sessions represented in this 
+manner are then clustered to produce community models, 
+which correspond to the navigational behavior of users. Hit rate 
+and the site size effects the scalability of methods. The 
+approach is tested on a single website so more study is required 
+to check it with different other websites. Also, the attribute and 
+threshold selection is manual. Only limited and first-order 
+modeling of the sequential patterns can be performed but the 
+approach can produce interesting navigational patterns [11]. 
+Borges et al. [12] presented a stochastic approach for 
+sequential pattern finding from user sessions. They are 
+modeled using a hypertext probabilistic grammar. Web pages 
+are represented by “non-terminal symbols”, links between web 
+pages are represented by “production rules” and sequences of 
+web pages are represented by “strings” according to the rules 
+of this grammar. A directed-graph breadth-first search 
+algorithm, using pre-specified threshold values for support and 
+confidence is then used in order to identify user navigation 
+sessions that are included in the hypertext grammar and 
+describe the users’ browsing behavior. They propose the use of 
+entropy as an estimator. The output of this algorithm strongly 
+depends upon the selected values of the input parameters, such 
+as the confidence. According to authors, their model is self 
+contained, coherent and compact. The approach can be helpful 
+not only for website designers to understand the preferences of 
+visitors but also for the individual users to understand 
+navigational patterns and increase knowledge of the web 
+contents [12].  
+III. EVALUATION CRITERIA 
+The assessment criteria for the current survey include 
+Graph Structure, Input Data Structure, Input Parameters, 
+Pattern Type, Application, Technique, Method, Algorithm, 
+Scalability and Tool Support. Some of these evaluation criteria 
+are extracted from the literature review of the already existing 
+papers and some are proposed by us. 
+• Graph Structure: If a technique considers a graph 
+structure for data it is regarded as Yes, and No otherwise. 
+• Pattern’s Type: This parameter tell that the proposed 
+technique identifies which kind of patterns. 
+Comments/type of pattern identified is written under this 
+heading. 
+• Algorithm: The name of algorithm which has been 
+proposed for finding sequential patterns. 
+• Input Parameters: The type of parameters defined by data 
+miner empirically for the proposed technique.    
+• Input Data Structures: The type of the data structure 
+which is used o take input i.e. log file or database.   
+• Applications: The type of applications for which these 
+techniques are proposed. 
+• Techniques: This parameter identifies the technique 
+according to one of our three defined groups i.e. 
+Association rule mining clustering or Markov Chain.   
+• Methods: Techniques are divided into two types of 
+methods. One is deterministic (recording the navigational 
+behavior of the user) and the other is stochastic method 
+(use the sequence of web pages that have been visited in 
+order to predict subsequent visits). 
+• Tool: Tool Support means either the proposed techniques 
+has some tool developed for the mining sequential patterns 
+or not. It is also checked whether a tool support is possible. 
+In this regard the experimental results have been checked. 
+• Scalability: It refers to the ability of mining sequential 
+patterns to support a large and complicated data sources. 
+The factor is categorized as Yes or No in the comparison 
+table to differentiate between techniques on the basis of 
+performance by ensuring if a particular technique can 
+gracefully handles the increase in size of data source.  
+IV. ANALYSIS 
+Chen et al. [1] introduced the concept of “maximal forward 
+references” which can be describe as the sequences of user’s 
+request documents  up to the last one before backtracking. The 
+aim of Maximal forward references algorithm is to convert the 
+original sequences of web logs into set of traversal patterns 
+based on association rules and dominant path.  Options of 
+selective scan are very useful and can help to improve the 
+performance To expose access patterns using a conditional 
+search strategy, Pie et al. [2] introduced a WAP-mine algorithm.  
+They also proposed a WAP-tree. This method is faster than 
+conventional methods. WAP-mine is efficient than GSP-based 
+solution in a wide margin. Mortazaviasl et al. [3] introduced a 
+novel projection based algorithm PrefixSpan, which support 
+sequential patterns mining. They basically worked on 
+partitioning the database of user sequences into smaller 
+databases for mining sequential patterns.  
+The approach introduced by Inokuchi et al. [4] is used for 
+the analysis of user’s browsing behavior. The generalization of 
+the adjacency matrix representation and the extension to the 
+other class of sub graphs and mining criteria are the open issues 
+in this technique.  
+Apriori like family of algorithm (SPIRIT family) is 
+proposed by Garofalakis et al. [5], which is used for mining 
+sequential patterns. These algorithms support user threshold 
+and user specified constraints for the resulting patterns. These 
+user constraints are given in the form of regular expressions as 
+an input. This gives data miner an opportunity to narrow results 
+according to his requirement by applying these constraints. 
+     For the enhancement of user constraints Masseglia et al. 
+[6] proposed an approach where user requires specification of 
+minimum and maximum time gaps among web log entries. 
+GENERAL algorithm is used for the processing of user access 
+data. It is a variation of GSP algorithm proposed by Srikant et 
+al. [23] for finding the generalized patterns. 
+          Bestavros et al. [24] presented a Markov modeling 
+application for web data. To predict the subsequent link within 
+a certain period of time that a user might follow, the first-order 
+Markov model is used. A probability distribution over 
+preceding links in the user's browsing history is utilized in 
+order to assign weights to preceding links, and thus create the 
+best predictors of the subsequent links. The technique is not 
+best suited for smaller applications [7].  Zhu et al. [8] presented 
+a similar approach who in addition exploited the web pages that 
+the user has accessed to reach at the requested page. An 
+algorithm for transition probability matrix compression is used 
+to cluster web pages with similar transition behaviors. 
+Anderson et al. [9] used first-order Markov models to describe 
+the browsing behavior of Web users and predict subsequent 
+requests. An algorithm MINPATH is proposed which 
+automatically improves wireless web navigation. 
+   For the identification of user sessions, Spiliopoulou et al. 
+[10] used various types of methods. Authors divide these 
+methods into time based and context based. For the discovery 
+of sequential patterns Web Utilization Miner (WUM) tool is 
+used. For the extraction of sequence rules from the web log 
+data, a MINT processor module of WUM is used. A semi-
+automated discovery process when used for the personalization 
+is a disadvantage for this technique. 
+According to the Paliouras et al. [11], clustering should be 
+allowed to overlap facts. On the basis of quality of the 
+community models, they proposed and evaluated their 
+approach. These criteria are independent of the clustering 
+method and make no assumption of non overlapping clusters. 
+A limited first-order modeling pattern is the disadvantage of 
+this approach. 
+Borges et al. [12] proposed an approach for the extraction 
+of sequential patterns from the user sessions. Hypertext 
+probabilistic grammar is used for modeling. One advantage of 
+this approach is the automatic generation of navigational paths. 
+It requires heuristics for output refinement which can be a 
+disadvantage. It is efficient but the output depends on the 
+selected values of the input parameters e.g. confidence.  
+A. Compare and Contrast 
+We have divided the surveyed techniques into association 
+rule mining, clustering and markov chain models and the 
+compare and contrast is done according to it. 
+1) Association Rules Mining echniques[1,2,3,4,5,6,10,12] 
+         In these association rule mining techniques, [4, 10] 
+consider graph structures but the other techniques [1, 2, 3, 5, 6, 
+and 12] have not used graph structure. The input data structure 
+used by [1, 2, 3, 4, 5, and 6] is almost same. Threshold input 
+parameter is supported by [1, 2, 3, 4, 5, 6, 12] techniques and 
+[10] used a bunch of traversed paths as input parameter. The 
+focus of all these techniques is to find the frequent sequential 
+patterns from the input data structures. [1, 2, 4, 5, 10] are 
+deterministic and [3, 6, 12] are the stochastic techniques. 
+Apriori like algorithms are used by [4, 5] and all other 
+techniques [1, 2, 3, 6, 10, 12] are new proposals. Techniques 
+[1, 2, 3, 5, and 10] are scalable. At least one tool is supported 
+by [1, 3, 6, 10, 12] except [2, 4, 5] techniques. On the basis of 
+parameters, we have concluded that technique [10] is most 
+efficient technique in this group as it takes the graph structure, 
+uses web log files, supports tool and scalability, extracts the 
+navigational behavior of user by using algorithm and 
+deterministic method. 
+1) Markov chain models techniques [7,8,9] 
+    These Markov chain models techniques are the clustering 
+techniques which take graph structure and use web log files as 
+input data structure. [7, 8] use the graph structure,  [9] Uses   
+TABLE I.   ANALYSIS MATRIX 
+ 
+wireless web navigations as an input data structure. All these 
+three techniques use different type of input parameters and 
+pattern types and perform link prediction. They use the same 
+method i.e. stochastic and also all support scalability. 
+Algorithm and tool used by [7, 8] are the same i.e. transition 
+matrix compression algorithm and online 
+navigation/recommendation explorer tool but [9] proposed 
+MINPATH algorithm. Hence techniques [7, 8] can be 
+identified as the best techniques from this group. 
+2) Clustering techniques [3, 11] 
+    We regarded [7, 8] as the best techniques from the Markov 
+Model based techniques. They basically fall under the same 
+clustering group so in this section we compare them with 
+techniques [3, 11] which are clustering based but are not based 
+on Markov Models. Graph structure is not taken by techniques 
+[3, 9, and 11] but [7, 8] techniques use the graph structure. 
+Web log files are used as an input data structure by [7, 8, and 
+11]. Input parameters and pattern types used by all techniques 
+are different but three of them [7, 8, 9] are for link prediction 
+application. All techniques use the same method i.e. Stochastic 
+and all techniques are scalable and have at least one tool 
+except technique [11], which has no tool support and is not 
+scalable. [7, 8] used the same algorithm. On the basis of 
+parameters defined for the analysis and comparison, we 
+conclude that [7, 8] being the most efficient techniques from 
+[3, 7, 8, 9, 11].    
+After the analysis and compare and contrast of different 
+techniques based our identified assessment criteria we 
+conclude that techniques [7, 8,] are the most efficient 
+techniques among all the surveyed techniques. The techniques 
+[7, 8] take graph structure, web log files are used as input data 
+structure in them, transition probability matrix is calculated 
+and extended link prediction has been performed in them. 
+Clustering and Markov chain models, the presence of 
+supported tools and their attribute of scalability make them the 
+strongest choice for sequential pattern finding. In all the other 
+remaining techniques some do not use graph structure, some 
+of them do not support scalability and some lack tool support.  
+V. CONCLUSION 
+Web usage mining is an emerging area to find the access 
+patterns from the web. Access patterns can provide the valuable 
+information about user behaviors, life time value of customers, 
+cross marketing strategies across products, and effectiveness of 
+promotional campaigns.  We focused on web usage mining 
+techniques in this survey paper and reviewed the challenges, 
+issues and techniques for finding sequential patterns. We 
+divided the techniques in three groups i.e. Clustering, 
+Association and Markov Model based techniques. Our findings 
+indicate that clustering is the best choice for sequential pattern 
+mining and the techniques by Sarukkai [7] & Zhu et al. [8] 
+based on Markov Models and are the best according to our 
+assessment criteria. We have further analyzed that the hybrids 
+of different techniques can also be used to find sequential 
+patterns in web usage mining data to gain more efficient 
+results. The analysis matrix summarizes the reviewed 
+techniques based on our assessment criteria. 
+VI. REFERENCES 
+ 
+[1] Chen. M.S., Park. J.S., & Yu. P.S., “Efficient data mining for path 
+traversal patterns”, IEEE Transactions on Knowledge and Data 
+Engineering, 10(2), 209-221, 1996. 
+[2] Pei. J., Han. J., Mortazavi-asl. B., & Zhu. H, “Mining access patterns 
+efficiently from Web logs”, Proceedings of Pacific-Asia Conference on 
+Knowledge Discovery and Data Mining (PAKDD’00) (pp. 396-407), 
+2000. 
+[3] Mortazavi-asl. B,  Discovering and mining user Web-page traversal 
+patterns. Master Thesis, School of Computer Science, Simon Fraser 
+University, 2001. 
+[4] Inokuchi. A., Washio. T., & Motoda. H, “ Complete mining of frequent 
+patterns from graphs: Mining graph data”,  Machine Learning, 50(3), 
+321-354, 2003. 
+[5] Garofalakis. M.N., Rastogi. R., & Shim. K, “SPIRIT: Sequential pattern 
+mining with regular expression constraints”,  The VLDB Journal, 223-
+234, 1999. 
+[6] Masseglia. F., Poncelet. P. & Teisseire.M, “Using data mining 
+techniques on Web access logs to dynamically improve hypertext 
+structure”,  ACM SigWebLetters, 8(3), 13-19, 1999. 
+[7] Sarukkai, R. R., “Link Prediction and Path analysis Using Markov 
+Chains”, In Proceedings of the 9th World Wide Web Conference, 
+Amsterdam, 2000. 
+[8] Zhu, T, “Using Markov Chains for Structural Link Prediction in 
+Adaptive Web Sites”, UM 2001, LNAI 2109, pp. 298-300, 2001. 
+[9] Anderson. C. R., Domingos. P, and Weld.D, “ Adaptive Web Navigation 
+for Wireless Devices”,  In Proceedings of the 17th International Joint 
+Conference on Artificial Intelligence (IJCAI-01), 2001. 
+[10] Spiliopoulou. M., Faulstich. L, and Wilkler. K, “A data miner analyzing 
+the navigational behavior of Web users”, In Proceedings of the 
+Workshop on Machine Learning in User Modeling of the ACAI99. 
+Greece, 1999. 
+[11] Paliouras. G., Papatheodorou. C, Karkaletsis. V, and Spyropoulos. C, 
+“Clustering the Users of Large Web Sites into Communities”, In 
+Proceedings of Intern. Conf. on Machine Learning (ICML), Stanford, 
+California, pp. 719-726, 2000. 
+[12] Borges, J. and Levene. M, “Data mining of user navigation patterns”,  In 
+Proceedings of Workshop on Web Usage Analysis and User Profiling 
+(WEBKDD), in conjunction with ACM SIGKDD International 
+Conference on Knowledge Discovery and Data Mining. San Diego, CA., 
+pp. 31-36, 1999. 
+[13] Agrawal, R., & Srikant, R. (1995). Mining sequential patterns. 
+Proceedings of the 11th International Conference on Data Engineering 
+(pp. 3-14). IEEE Computer Society Press. 
+[14] Ramakrishnan Srikant Rakesh Agrawal,  Mining quantitative association 
+rules in large relational tables, Volume 25 ,  Issue 2  (June 1996) Pages: 
+1 - 12    Year of  Publication: 1996 , ISSN:0163-5808  
+[15] Bamshad M, Robert C, Jaideep S, “Automatic Personalization based on 
+web usage Mining”, Volume 43 ,  Issue 8  (August 2000), Pages: 142 – 
+151, Year of  Publication: 2000, ISSN: 0001-0782 
+[16] Bamshad M, Honghua D, Tao L,  Miki N, “Using Sequential and Non-
+Sequential Patterns in Predictive Web Usage Mining Tasks”, 
+Proceedings of the 2002 IEEE International Conference on Data Mining, 
+Page: 669  Year of Publication: 2002 , ISBN:0-7695-1754 
+[17] Jian P, Jiawei H, Hongjun L,  Shojiro N,  Shiwei T,  Dongqing Y,“H-
+Mine: Hyper-Structure Mining of Frequent Patterns in Large 
+Databases”, Proceedings of the 2001 IEEE International Conference on 
+Data Mining,Pages: 441 – 448, Year of Publication: 2001, ISBN:0-7695-
+1119-8  
+[18] S. Jaideep, C. Robert, Deshpande. M and Tan. P, “Web Usage 
+Mining:Discovery and Application of Usage Patterns from Web Log”, 
+ACM SIGKDD Exploration, 2000. 
+[19] Koutri. M, Avouris. N and Dashkalaki. S, “ A Survey of Web Usage 
+Mining: Techniques for Building Web Base Adaptive Hypermedia 
+Systems”, IRM press, an imprint of idea Group Inc, 2005. 
+[20] Pierrakos. D, Paliouras. G, Papatheodorou.C and Spyropoulos.C, “Web 
+Usage Mining as a Tool for Personalization: a survey”, Volume 13 
+,  Issue 4  (November 2003), Pages: 311 – 372, ISSN:0924-1868, 2003. 
+[21] Agrawal. Rand SrikantR, “Mining sequential patterns”, Proceedings of 
+the 11th International Conference on Data Engineering (pp. 3-14). IEEE 
+Computer Society Press, 1995. 
+[22] Jain. A.K and  Dubes. R.C, “Algorithms for clustering data”, Upper 
+Saddle River, NJ: Prentice-Hall (Advanced Reference Series), 1998 . 
+[23] Srikant. R.and Agrawal, R., “Mining sequential patterns: Generalizations 
+and performance improvements”. Proceedings of the 5th International 
+Conference Extending Database Technology, 1057, 3-17, 1996. 
+[24] Bestavros. A, “Using speculation to reduce server load and service time 
+on the WWW”. In Proceedings of CIKM'95: The 4th ACM International 
+Conference on Information and Knowledge Management, Baltimore, 
+Maryland, 1995. 
+[25] Jinguang. L and  Roopa. D., “Web Usage Mining—Patterns Discovery 
+and its applicaions”, www.docstoc.com/.../Web-Usage-Mining:---
+Pattern-Discovery-and-its-applications. 
+ 
